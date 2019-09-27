@@ -52,6 +52,7 @@ public class InputController : MonoBehaviour
                 rightStickRotation[i] = rotation;
 
                 //take in input for shooting
+                isShooting[i] = Input.GetAxis("Player" + (i + 1) + "RightTrigger") == 1 && !isShooting[i];
             }
         }
     }

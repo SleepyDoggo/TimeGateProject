@@ -12,6 +12,9 @@ public class FireGun : MonoBehaviour
     //different behavior if it is a player
     public bool isPlayer = true;
 
+    [Range(1, 4)]
+    public int playerNumber = 1;
+
     //fire rate
     public float fireRate = 1;
     //damage
@@ -34,6 +37,7 @@ public class FireGun : MonoBehaviour
             if (InputController.instance.useJoySticks)
             {
                 //implement controller and player number later
+                isFiring = InputController.instance.isShooting[playerNumber - 1];
             }
             else
             {
