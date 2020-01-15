@@ -5,13 +5,13 @@ using UnityEngine;
 public class DroneAIBeta : MonoBehaviour
 {
     //fields required for movement
-    public float speed = 1;
+    public float moveSpeed = 1;
     public GameObject player;
     private float magnitude;
     //
     void Start()
     {
-        magnitude = (1 / 10) * speed;
+        magnitude = (1 / 10) * moveSpeed;
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class DroneAIBeta : MonoBehaviour
         
 
         //get the tangent vector based on the time
-        Vector2 tangentVec = getTangentVector(speed);
+        Vector2 tangentVec = getTangentVector(moveSpeed);
         tangentVec.Normalize();//normalize so it only stores direction
 
         //determine if in radius of the player
@@ -37,28 +37,38 @@ public class DroneAIBeta : MonoBehaviour
         }
         else
         {
-            playerDirection = new Vector2(transform.position.x, transform.position.y) -
-                                            new Vector2(player.transform.position.x, player.transform.position.y);
+            //playerDirection = new Vector2(transform.position.x, transform.position.y) -
+            //                                new Vector2(player.transform.position.x, player.transform.position.y);
+            playerDirection = new Vector2(player.transform.position.x, player.transform.position.y)
+                - new Vector2(transform.position.x, transform.position.y);
         }
         //TODO, maybe change the amount of influence each vector has based on the distance from the player
-        Vector2 moveDirection = tangentVec; 
+        Vector2 moveDirection = tangentVec + playerDirection; 
         moveDirection.Normalize();
 
 
         //move object
-        transform.position += new Vector3(moveDirection.x * Time.deltaTime, moveDirection.y * Time.deltaTime, 0);
+        transform.position += new Vector3(moveDirection.x * Time.deltaTime*moveSpeed, 
+            moveDirection.y * Time.deltaTime * moveSpeed, 0);
     }
 
-    Vector2 getTangentVector(float moveSpeed)
+    Vector2 getTangentVector(float moveRadius)
     {
-        //Vector2 currentPosition = new Vector2(Mathf.Sin(Time.time), Mathf.Sin(Time.time) * Mathf.Cos(Time.time));
+        //Vector2 currentPosition = new Vector2(Mathf.Cos(Time.time), Mathf.Sin(Time.time) * Mathf.Cos(Time.time));
+        //Vector2 currentPosition = new Vector2(-Mathf.Sin(Time.time), Mathf.Pow(Mathf.Cos(Time.time),2) - Mathf.Pow(Mathf.Sin(Time.time), 2));
         //Vector2 nextPosition = new Vector2(Mathf.Sin(Time.time + Time.deltaTime), 
         //                                    Mathf.Sin(Time.time + Time.deltaTime) * Mathf.Cos(Time.time + Time.deltaTime));
-        Vector2 currentPosition = new Vector2(Mathf.Cos(Time.time*moveSpeed), Mathf.Sin(Time.time*moveSpeed));
-        Vector2 nextPosition = new Vector2(Mathf.Cos(Time.time * moveSpeed + Time.deltaTime),
-            Mathf.Sin(Time.time * moveSpeed + Time.deltaTime));
+        //Vector2 currentPosition = new Vector2(Mathf.Cos(Time.time*moveSpeed), Mathf.Sin(Time.time*moveSpeed));
+        //Vector2 nextPosition = new Vector2(Mathf.Cos(Time.time * moveSpeed + Time.deltaTime*moveSpeed),
+        //    Mathf.Sin(Time.time * moveSpeed + Time.deltaTime*moveSpeed));
 
-        return nextPosition - currentPosition;
+        Vector2 currentPosition = new Vector2((-Mathf.Sin(Time.time)), 
+            (Mathf.Cos(Time.time)));
+        //Vector2 nextPosition = new Vector2((Mathf.Cos((Time.time + Time.deltaTime)*moveSpeed)),
+        //    (Mathf.Sin((Time.time + Time.deltaTime)*moveSpeed)));
+
+        //return nextPosition - currentPosition;
+        return currentPosition;
         //return new Vector2(-Mathf.Sin(t), Mathf.Pow(Mathf.Cos(t), 2) - Mathf.Pow(Mathf.Sin(t), 2));
     }
 
