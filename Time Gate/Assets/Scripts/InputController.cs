@@ -12,6 +12,8 @@ public class InputController : MonoBehaviour
     public static Vector2 mouse_pos;
     public Vector2[] rotationDiffVecs;
     public bool[] isShooting;
+
+    public bool inMenu = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,12 @@ public class InputController : MonoBehaviour
 
                 //take in input for shooting
                 isShooting[i] = Input.GetAxis("Player" + (i + 1) + "RightTrigger") == 1 && !isShooting[i];
+
+                /**if (inMenu) {
+                    if (Input.GetButtonDown("Player" + (i+1)+"AButton")) {
+                        Debug.Log("Button is being pressed");
+                    }
+                }**/
             }
         }
     }
