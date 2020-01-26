@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
+    public GameObject[] playerTextItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,12 @@ public class MenuController : MonoBehaviour
             if (Input.GetButtonDown("Player" + (i + 1) + "AButton"))
             {
                 Debug.Log("Button is being pressed");
+                if (!playerTextItems[i].GetComponent<PlayerSelect>().isActive) {
+                    playerTextItems[i].GetComponent<PlayerSelect>().ToggleText();
+                }
+
+                //check if player one and b is pressed, should exit the screen.
+
             }
         }
     }
