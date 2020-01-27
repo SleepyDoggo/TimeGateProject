@@ -9,11 +9,25 @@ public class PlayerDataCollection : MonoBehaviour
     private int playerCount;
     public Vector3 averagePosition;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Debug.Log("COllection running");
         players = new ArrayList();
         playerCount = 0;
         instance = this;
+    }
+
+    public PlayerData GetPlayerData(int playerNum)
+    {
+        foreach(PlayerData data in players)
+        {
+            if(data.playerID == playerNum)
+            {
+                return data;
+            }
+            
+        }
+        return null;
     }
 
     public void AddPlayer(PlayerData player, int playerNum)
