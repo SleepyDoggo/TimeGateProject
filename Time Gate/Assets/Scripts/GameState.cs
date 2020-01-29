@@ -29,6 +29,7 @@ public class GameState : MonoBehaviour
         PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
         //TestSinglePlayer();
         InitializePlayers();
+        ContinueGame();
     }
 
     void InitializePlayers()
@@ -101,7 +102,20 @@ public class GameState : MonoBehaviour
         if(PlayerPrefs.GetInt(FLAG_GAME_OVER) == FLAG_VALUE_TRUE)
         {
             GameOver.SetActive(true);
+            PauseGame();
         }
+    }
+
+    //Pauses game
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    //Continue after pause
+    void ContinueGame()
+    {
+        Time.timeScale = 1;
     }
 
     void TestUserPrefs() {
