@@ -25,8 +25,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TestMultiplayer();
         PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
+        //TestMultiplayer();
         //TestSinglePlayer();
         InitializePlayers();
         ContinueGame();

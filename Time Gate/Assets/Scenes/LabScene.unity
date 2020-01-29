@@ -519,6 +519,11 @@ PrefabInstance:
       propertyPath: cameraToShake
       value: 
       objectReference: {fileID: 1334474921}
+    - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: playerNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
 --- !u!1 &296629515
@@ -3177,12 +3182,12 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+    - target: {fileID: 5448657667082842716, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5448657667082842716, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+    - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
       value: 2
@@ -15875,6 +15880,11 @@ PrefabInstance:
       propertyPath: cameraToShake
       value: 
       objectReference: {fileID: 1334474921}
+    - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: playerNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
 --- !u!1 &589378945

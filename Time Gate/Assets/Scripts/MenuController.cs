@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -22,19 +23,45 @@ public class MenuController : MonoBehaviour
 				Debug.Log("Button A is being pressed");
 				if (!playerTextItems[i].GetComponent<PlayerSelect>().isActive) {
 					playerTextItems[i].GetComponent<PlayerSelect>().ToggleText();
-				}
+				}else if(i == 0)//player 1
+                {
+                    BeginGame();
+                }
 
 				//check if player one and b is pressed, should exit the screen.
 
 			}
 			else if(Input.GetButtonDown("Player" + (i + 1) + "BButton"))
 			{
-				Debug.Log("Button B is being pressed");
-				if (!playerTextItems[i].GetComponent<PlayerSelect>().isActive) {
+				//if the b button is pressed, then toggle if it is active, otherwise do nothing unless player 1
+				if (playerTextItems[i].GetComponent<PlayerSelect>().isActive) {
 					playerTextItems[i].GetComponent<PlayerSelect>().ToggleText();
-				}
+				}else if(i == 0)//player 1
+                {
+                    //go to the main menu screen
+                    Main_Menu.ReturnToMainMenu();
+                }
 
 			}
 		}
 	}
+
+    void BeginGame()
+    {
+        //set player preferences
+        PlayerPrefs.SetInt(GameState.FLAG_PLAYER_ONE, playerTextItems[0].GetComponent<PlayerSelect>().isActive ?
+                            GameState.FLAG_VALUE_TRUE : GameState.FLAG_VALUE_FALSE);
+
+        PlayerPrefs.SetInt(GameState.FLAG_PLAYER_TWO, playerTextItems[1].GetComponent<PlayerSelect>().isActive ?
+                            GameState.FLAG_VALUE_TRUE : GameState.FLAG_VALUE_FALSE);
+
+        PlayerPrefs.SetInt(GameState.FLAG_PLAYER_THREE, playerTextItems[2].GetComponent<PlayerSelect>().isActive ?
+                            GameState.FLAG_VALUE_TRUE : GameState.FLAG_VALUE_FALSE);
+
+        PlayerPrefs.SetInt(GameState.FLAG_PLAYER_FOUR, playerTextItems[3].GetComponent<PlayerSelect>().isActive ?
+                            GameState.FLAG_VALUE_TRUE : GameState.FLAG_VALUE_FALSE);
+
+        //go to the scene
+        SceneManager.LoadScene(1);
+    }
 }
