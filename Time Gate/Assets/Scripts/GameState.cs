@@ -18,7 +18,7 @@ public class GameState : MonoBehaviour
 
     //references to the players
     public PlayerData[] players;
-    public GameObject gameover;
+    public GameObject GameOver;
 
 
 
@@ -93,11 +93,14 @@ public class GameState : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Check game over
+        CheckGameOver();
+
         //Check if game over is true, if so set inactive UI prefab to active
         if(PlayerPrefs.GetInt(FLAG_GAME_OVER) == FLAG_VALUE_TRUE)
         {
-            gameover.SetActive(true);
+            GameOver.SetActive(true);
         }
     }
 
