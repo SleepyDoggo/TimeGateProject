@@ -434,6 +434,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: playerID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,20 +519,10 @@ PrefabInstance:
       propertyPath: cameraToShake
       value: 
       objectReference: {fileID: 1334474921}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+    - target: {fileID: 5448657667082842716, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: isActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: playerID
-      value: 3
+      propertyPath: playerNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
@@ -3092,6 +3097,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3181,16 +3196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: playerNumber
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: isActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: playerID
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
@@ -15778,6 +15783,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15848,20 +15868,10 @@ PrefabInstance:
       propertyPath: cameraToShake
       value: 
       objectReference: {fileID: 1334474921}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+    - target: {fileID: 5448657667082842716, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: isActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: playerID
-      value: 2
+      propertyPath: playerNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
@@ -16006,6 +16016,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16076,16 +16096,6 @@ PrefabInstance:
       propertyPath: cameraToShake
       value: 
       objectReference: {fileID: 1334474921}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: isActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd81c90858fe9ed43a4a25e3ffc966e3, type: 3}
 --- !u!1 &902124307
