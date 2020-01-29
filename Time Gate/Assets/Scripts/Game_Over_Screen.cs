@@ -8,13 +8,13 @@ public class Game_Over_Screen : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(sceneBuildIndex: 0);
+        SceneManager.LoadScene(sceneBuildIndex: 1);
     }
 
-    public void ExitGame()
+    public void BackToMenu()
     {
 
-        Application.Quit();
+        SceneManager.LoadScene(sceneBuildIndex: 0);
 
     }
 }

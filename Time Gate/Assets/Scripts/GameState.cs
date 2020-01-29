@@ -9,6 +9,8 @@ public class GameState : MonoBehaviour
     public static readonly string FLAG_PLAYER_TWO = "P2";
     public static readonly string FLAG_PLAYER_THREE = "P3";
     public static readonly string FLAG_PLAYER_FOUR = "P4";
+
+    public static readonly string FLAG_GAME_OVER = "gameover";
     //false is set to zero because the playerprefs defaults to zero if the flag hasnt been set, assume false unless
     //told otherwise.
     public static readonly int FLAG_VALUE_TRUE = 1;
@@ -16,6 +18,7 @@ public class GameState : MonoBehaviour
 
     //references to the players
     public PlayerData[] players;
+    public GameObject gameover;
 
 
 
@@ -23,6 +26,7 @@ public class GameState : MonoBehaviour
     void Start()
     {
         TestMultiplayer();
+        PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
         //TestSinglePlayer();
         InitializePlayers();
     }
@@ -78,10 +82,23 @@ public class GameState : MonoBehaviour
         }
     }
 
+
+    //Check for gameover
+    void CheckGameOver()
+    {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_TRUE);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        //Check if game over is true, if so set inactive UI prefab to active
+        if(PlayerPrefs.GetInt(FLAG_GAME_OVER) == FLAG_VALUE_TRUE)
+        {
+            gameover.SetActive(true);
+        }
     }
 
     void TestUserPrefs() {
