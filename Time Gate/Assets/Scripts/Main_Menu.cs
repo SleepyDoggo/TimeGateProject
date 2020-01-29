@@ -8,7 +8,8 @@ public class Main_Menu : MonoBehaviour
 
     public void SinglePlayerStart()
     {
-
+        //set game to single player.
+        PlayerPrefs.SetInt(GameState.FLAG_MULTIPLAYER, GameState.FLAG_VALUE_FALSE);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
@@ -25,5 +26,10 @@ public class Main_Menu : MonoBehaviour
 
         Application.Quit();
 
+    }
+
+    public static void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
