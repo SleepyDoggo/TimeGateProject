@@ -22,6 +22,9 @@ public class FireGun : MonoBehaviour
 
     private bool isFiring;
     private bool firingLock;
+
+    public GameObject projectile;
+    public float projectileSpeed = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +64,21 @@ public class FireGun : MonoBehaviour
         firingLock = true;
         //display the prefab
         GameObject obj = Instantiate(muzzleFire, transform.position, transform.rotation);
+
+        //create a gunshot
+        GameObject theProjectile = Instantiate(projectile, transform.position, transform.rotation);
+
+        //set direction to the normal of our rotation for our projectile
+        float rotation = theProjectile.transform.rotation.eulerAngles.z;
+        rotation = (rotation + 360) % 360;
+        float rotationRads = Mathf.Deg2Rad * rotation;
+
+        float rotationY = (theProjectile.transform.rotation.eulerAngles.y + 360) % 360;
+        float rotationYRads = rotationY * Mathf.Deg2Rad;
+
+        theProjectile.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(rotationRads) * Mathf.Cos(rotationYRads),
+            Mathf.Sin(rotationRads)) * projectileSpeed;
+
         obj.transform.parent = transform;
         obj.transform.localPosition = Vector3.zero;
         cameraToShake.GetComponent<ScreenShake1>().ShakeScreen();
