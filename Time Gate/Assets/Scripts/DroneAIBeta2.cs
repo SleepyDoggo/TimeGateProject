@@ -16,6 +16,10 @@ public class DroneAIBeta2 : MonoBehaviour
     private float shootingTimer, waitingTimer;
 
     public float shootingFrequency = 3.0f;
+    public GameObject projectile;
+    public GameObject firingPoint;
+
+    public float projectileSpeed = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,5 +93,9 @@ public class DroneAIBeta2 : MonoBehaviour
     {
         //shoot a projectile in the direction of the enemy
         //TODO
+        GameObject obj = Instantiate(projectile, firingPoint.transform.position,Quaternion.identity);
+        obj.transform.parent = null;
+        obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+
     }
 }
