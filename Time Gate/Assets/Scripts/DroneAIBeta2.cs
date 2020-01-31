@@ -63,7 +63,6 @@ public class DroneAIBeta2 : MonoBehaviour
         //TODO - path finding to avoid going onto walls.
         if (isMoving)
         {
-            Debug.Log(isWaiting);
             //normalize tracking vector and move enemy
             transform.position += new Vector3(trackingVector.normalized.x * movementSpeed*Time.deltaTime, 
                 trackingVector.normalized.y * movementSpeed*Time.deltaTime,
