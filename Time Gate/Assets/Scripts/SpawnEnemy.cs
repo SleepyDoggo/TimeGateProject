@@ -26,18 +26,15 @@ public class SpawnEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isAvailable = false;
-        Debug.Log("Someone entered");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isAvailable = true;
-        Debug.Log("Someone left");
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         isAvailable = false;
-        Debug.Log("Someone stayed");
     }
 }
