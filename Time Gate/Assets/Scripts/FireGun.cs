@@ -22,11 +22,10 @@ public class FireGun : MonoBehaviour
 
     private bool isFiring;
     private bool firingLock;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    //for weapon firing logic
+    public Transform firePoint;
+    public GameObject bulletPrefab;
 
     // Update is called once per frame
     void Update()
@@ -64,6 +63,10 @@ public class FireGun : MonoBehaviour
         obj.transform.parent = transform;
         obj.transform.localPosition = Vector3.zero;
         cameraToShake.GetComponent<ScreenShake1>().ShakeScreen();
+
+        //shooting logic
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
         //wait
         yield return new WaitForSeconds(fireRate);
         firingLock = false;
