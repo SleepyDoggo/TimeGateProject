@@ -11,7 +11,7 @@ public class PlayerDataCollection : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("COllection running");
+        Debug.Log("Collection running");
         players = new ArrayList();
         playerCount = 0;
         instance = this;
