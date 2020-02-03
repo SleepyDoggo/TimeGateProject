@@ -27,6 +27,7 @@ public class DroneAIBeta2 : MonoBehaviour
     [Range(1, 100)]
     public int maxHealth;
 
+    public GameObject healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,7 +109,10 @@ public class DroneAIBeta2 : MonoBehaviour
 
     void TakeDamage(int damage)
     {
+        healthBar.SetActive(health != maxHealth);
         health = health - damage;
+        healthBar.SetActive(health != maxHealth);
+        healthBar.GetComponentInChildren<HealthPercent>().percent = ((health*1f) / maxHealth) * 100;
         if(health <= 0)
         {
             //destroy the player
