@@ -18289,6 +18289,11 @@ PrefabInstance:
       propertyPath: positionToTrack
       value: 
       objectReference: {fileID: 62924085}
+    - target: {fileID: 2451653421188473983, guid: b1171b648899ac14cac9cb14a9616e72,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1171b648899ac14cac9cb14a9616e72, type: 3}
 --- !u!1001 &8063448931173342106
