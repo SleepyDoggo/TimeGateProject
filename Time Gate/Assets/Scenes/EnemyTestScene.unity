@@ -3350,6 +3350,12 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5526393660822921180, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5792889199956690718, guid: df2e62b64e2a2ed4bbefad612c3f5fee,
+        type: 3}
     - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
@@ -18289,6 +18295,11 @@ PrefabInstance:
       propertyPath: positionToTrack
       value: 
       objectReference: {fileID: 62924085}
+    - target: {fileID: 2451653421188473983, guid: b1171b648899ac14cac9cb14a9616e72,
+        type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1171b648899ac14cac9cb14a9616e72, type: 3}
 --- !u!1001 &8063448931173342106
