@@ -108,7 +108,7 @@ public class DroneAIBeta2 : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        health -= damage;
+        health = health - damage;
         if(health <= 0)
         {
             //destroy the player
@@ -119,12 +119,12 @@ public class DroneAIBeta2 : MonoBehaviour
     //use ontriggerenter not oncollisionenter if using istrigger
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collision");
         //check tag from collision. Only accept collisions from player_projectile tags
         if (collision.gameObject.CompareTag("player_projectile"))
         {
-            Debug.Log("Ive been hit");
-            //TakeDamage(collision.gameObject.GetComponent<TODO>().GetDamage());
+            int damage = collision.gameObject.GetComponent<ProjectileDamage>().GetDamage();
+            Destroy(collision.gameObject);
+            TakeDamage(damage);
         }
     }
 }
