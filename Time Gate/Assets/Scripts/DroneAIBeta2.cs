@@ -20,6 +20,13 @@ public class DroneAIBeta2 : MonoBehaviour
     public GameObject firingPoint;
 
     public float projectileSpeed = 10;
+
+    //fields required for health and dying.
+    public Rigidbody2D rb;
+    private int health;
+    [Range(1, 100)]
+    public int maxHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +35,7 @@ public class DroneAIBeta2 : MonoBehaviour
         shot = false;
         shootingTimer = 0;
         waitingTimer = 0;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -96,5 +104,27 @@ public class DroneAIBeta2 : MonoBehaviour
         obj.transform.parent = null;
         obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
 
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            //destroy the player
+            Destroy(this.gameObject);
+        }
+    }
+
+    //use ontriggerenter not oncollisionenter if using istrigger
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("collision");
+        //check tag from collision. Only accept collisions from player_projectile tags
+        if (collision.gameObject.CompareTag("player_projectile"))
+        {
+            Debug.Log("Ive been hit");
+            //TakeDamage(collision.gameObject.GetComponent<TODO>().GetDamage());
+        }
     }
 }
