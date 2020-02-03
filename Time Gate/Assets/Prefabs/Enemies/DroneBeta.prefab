@@ -71,7 +71,7 @@ MonoBehaviour:
   firingPoint: {fileID: 2451653422370192372}
   projectileSpeed: 1
   rb: {fileID: 415351333280094831}
-  maxHealth: 0
+  maxHealth: 3
 --- !u!50 &415351333280094831
 Rigidbody2D:
   serializedVersion: 4
