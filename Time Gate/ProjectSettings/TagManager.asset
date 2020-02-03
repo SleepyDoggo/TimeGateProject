@@ -49,6 +49,12 @@ TagManager:
   - name: Player
     uniqueID: 2896655763
     locked: 0
+  - name: Health1
+    uniqueID: 2302556773
+    locked: 0
+  - name: Health2
+    uniqueID: 3179022155
+    locked: 0
   - name: Weapons
     uniqueID: 1573726289
     locked: 0
