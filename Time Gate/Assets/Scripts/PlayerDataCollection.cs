@@ -64,8 +64,7 @@ public class PlayerDataCollection : MonoBehaviour
             if(player == null)
             {
                 players.Remove(player);
-            }
-            if (player.isActive)
+            }else if (player.isActive)
             {
                 count++;
             }
