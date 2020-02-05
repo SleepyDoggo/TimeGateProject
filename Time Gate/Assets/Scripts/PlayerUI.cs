@@ -8,6 +8,8 @@ public class PlayerUI : MonoBehaviour
     private float MaxHealth { get; set; }
     public float Health { get; set; }
     public Slider playerHealthBar;
+    public Text scoreText;
+    public int score;
     [Range(1,4)]
     public int playerNum;
     private PlayerData data;
@@ -18,6 +20,7 @@ public class PlayerUI : MonoBehaviour
         //establishes health bar at start of game
         MaxHealth = 100f;
         Health = MaxHealth;
+        score = 0;
         Debug.Log(PlayerDataCollection.instance.GetNumPlayers());
         data = PlayerDataCollection.instance.GetPlayerData(playerNum-1);
         this.gameObject.SetActive(data != null);
@@ -26,6 +29,7 @@ public class PlayerUI : MonoBehaviour
             MaxHealth = data.maxPlayerHealth;
             Health = MaxHealth;
             playerHealthBar.value = CalculateHealth();
+            score = 0;
         }
     }
 
@@ -37,6 +41,13 @@ public class PlayerUI : MonoBehaviour
         return Health / MaxHealth;
     }
 
+    //calculates current score 
+    int CalculateScore()
+    {
+        score = data.GetScore();
+        return score;
+    }
+
     //This is where denemy collision damaged will be handled
     void Update()
     {
@@ -44,6 +55,8 @@ public class PlayerUI : MonoBehaviour
         if (data != null)
         {
             playerHealthBar.value = CalculateHealth();
+            score = CalculateScore();
+            scoreText.text = score.ToString("000000");
         }
     }
 }
