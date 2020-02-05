@@ -79,6 +79,7 @@ public class FireGun : MonoBehaviour
         theProjectile.GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Cos(rotationRads) * Mathf.Cos(rotationYRads),
             Mathf.Sin(rotationRads)) * projectileSpeed;
         theProjectile.GetComponent<ProjectileDamage>().SetDamage(damage);
+        theProjectile.GetComponent<ProjectileDamage>().AttachPlayer(gameObject.GetComponentInParent<PlayerData>());
 
         obj.transform.parent = transform;
         obj.transform.localPosition = Vector3.zero;
