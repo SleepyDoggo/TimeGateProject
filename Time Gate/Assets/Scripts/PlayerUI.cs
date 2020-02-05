@@ -8,6 +8,9 @@ public class PlayerUI : MonoBehaviour
     public float MaxHealth { get; set; }
     public float Health { get; set; }
     public Slider playerHealthBar;
+    [Range(1,4)]
+    public int playerNum;
+    private PlayerData data;
 
     // Start is called before the first frame update
     void Start()
@@ -16,30 +19,21 @@ public class PlayerUI : MonoBehaviour
         MaxHealth = 100f;
         Health = MaxHealth;
         playerHealthBar.value = CalculateHealth();
-    }
-
-    //decreases health based on damage amount
-    void Damage(float damageAmount)
-    {
-        Health -= damageAmount;
-        playerHealthBar.value = CalculateHealth();
-
-        //Will also handle if player is dead once health is 0
+        data = PlayerDataCollection.instance.GetPlayerData(playerNum - 1);
+        Debug.Log(data.isActive);
+        this.gameObject.SetActive(data.isActive);
     }
 
     //calculates current health 
     float CalculateHealth()
     {
+        Health = data.playerHealth;
         return Health / MaxHealth;
     }
 
     //This is where denemy collision damaged will be handled
     void Update()
     {
-        //for now, a key input represents how damage would work
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Damage(5);
-        }
+        CalculateHealth();
     }
 }
