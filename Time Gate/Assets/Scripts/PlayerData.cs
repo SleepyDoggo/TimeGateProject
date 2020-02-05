@@ -66,4 +66,9 @@ public class PlayerData : MonoBehaviour
     {
         playerScore += amount;
     }
+
+    public int GetScore()
+    {
+        return playerScore;
+    }
 }
