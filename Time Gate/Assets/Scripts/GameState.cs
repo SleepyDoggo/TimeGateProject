@@ -20,6 +20,7 @@ public class GameState : MonoBehaviour
     //references to the players
     public PlayerData[] players;
     public GameObject GameOver;
+    public GameObject ui;
 
 
 
@@ -31,7 +32,17 @@ public class GameState : MonoBehaviour
         //TestMultiplayer();
         TestSinglePlayer();
         InitializePlayers();
+        InitializeUI();
         ContinueGame();
+    }
+
+    void InitializeUI()
+    {
+        PlayerUI[] playersUI = ui.GetComponentsInChildren<PlayerUI>();
+        foreach(PlayerUI theUI in playersUI)
+        {
+            theUI.initialize();
+        }
     }
 
     void InitializePlayers()
@@ -39,7 +50,6 @@ public class GameState : MonoBehaviour
         //detect if singleplayer
         if(PlayerPrefs.GetInt(FLAG_MULTIPLAYER) == FLAG_VALUE_FALSE)
         {
-            Debug.Log("Running");
             //set player with id player num zero to active, activate object
             PlayerData player = players[0];
             player.isActive = true;
@@ -123,7 +133,6 @@ public class GameState : MonoBehaviour
 
     void TestUserPrefs() {
         PlayerPrefs.SetInt(FLAG_MULTIPLAYER,FLAG_VALUE_TRUE);
-        Debug.Log(PlayerPrefs.GetInt(FLAG_MULTIPLAYER));
     }
 
     void ResetFlags()
