@@ -13,20 +13,24 @@ public class PlayerUI : MonoBehaviour
     private PlayerData data;
 
     // Start is called before the first frame update
-    void Start()
+    public void initialize()
     {
         //establishes health bar at start of game
         MaxHealth = 100f;
         Health = MaxHealth;
-        playerHealthBar.value = CalculateHealth();
-        data = PlayerDataCollection.instance.GetPlayerData(playerNum - 1);
-        Debug.Log(data.isActive);
-        this.gameObject.SetActive(data.isActive);
+        Debug.Log(PlayerDataCollection.instance.GetNumPlayers());
+        data = PlayerDataCollection.instance.GetPlayerData(playerNum-1);
+        this.gameObject.SetActive(data != null);
+        if (data != null && data.isActive)
+        {
+            playerHealthBar.value = CalculateHealth();
+        }
     }
 
     //calculates current health 
     float CalculateHealth()
     {
+        
         Health = data.playerHealth;
         return Health / MaxHealth;
     }
@@ -34,6 +38,10 @@ public class PlayerUI : MonoBehaviour
     //This is where denemy collision damaged will be handled
     void Update()
     {
-        CalculateHealth();
+        //Debug.Log(PlayerDataCollection.instance.GetPlayerData(1));
+        if (data != null)
+        {
+            playerHealthBar.value = CalculateHealth();
+        }
     }
 }
