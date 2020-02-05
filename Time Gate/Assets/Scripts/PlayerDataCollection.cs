@@ -61,6 +61,10 @@ public class PlayerDataCollection : MonoBehaviour
         int count = 0;
         foreach(PlayerData player in players)
         {
+            if(player == null)
+            {
+                players.Remove(player);
+            }
             if (player.isActive)
             {
                 count++;
