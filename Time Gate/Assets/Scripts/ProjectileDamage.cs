@@ -6,6 +6,9 @@ public class ProjectileDamage : MonoBehaviour
 {
     // Start is called before the first frame update
     private int damage;
+
+    //only used by enemies
+    PlayerData playerInfo;
     void Start()
     {
     }
@@ -23,7 +26,16 @@ public class ProjectileDamage : MonoBehaviour
 
     public int GetDamage()
     {
-        Debug.Log(damage);
         return damage;
+    }
+
+    public void AttachPlayer(PlayerData player)
+    {
+        playerInfo = player;
+    }
+
+    public PlayerData GetPlayerData()
+    {
+        return playerInfo;
     }
 }
