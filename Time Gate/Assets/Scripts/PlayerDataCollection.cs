@@ -11,7 +11,6 @@ public class PlayerDataCollection : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Collection running");
         players = new ArrayList();
         playerCount = 0;
         instance = this;
@@ -38,7 +37,6 @@ public class PlayerDataCollection : MonoBehaviour
             playerCount++;
         }
         averagePosition = CalculateAveragePosition();
-        Debug.Log(averagePosition);
     }
 
     public int GetNumPlayers()
