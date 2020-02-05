@@ -7,6 +7,8 @@ public class PlayerData : MonoBehaviour
     public bool isActive;
     [Range(0,3)]
     public int playerID;
+    public int playerHealth;
+    public int playerScore;
     // Start is called before the first frame update
     void Awake()
     {
