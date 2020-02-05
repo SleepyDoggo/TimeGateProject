@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public float MaxHealth { get; set; }
+    private float MaxHealth { get; set; }
     public float Health { get; set; }
     public Slider playerHealthBar;
     [Range(1,4)]
@@ -23,6 +23,8 @@ public class PlayerUI : MonoBehaviour
         this.gameObject.SetActive(data != null);
         if (data != null && data.isActive)
         {
+            MaxHealth = data.maxPlayerHealth;
+            Health = MaxHealth;
             playerHealthBar.value = CalculateHealth();
         }
     }
@@ -31,7 +33,7 @@ public class PlayerUI : MonoBehaviour
     float CalculateHealth()
     {
         
-        Health = data.playerHealth;
+        Health = data.GetHealth();
         return Health / MaxHealth;
     }
 
