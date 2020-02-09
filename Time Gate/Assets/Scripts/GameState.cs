@@ -97,19 +97,14 @@ public class GameState : MonoBehaviour
 
     //Check for gameover
     //TODO - set actual conditions for this
-    void CheckGameOver()
+    public static void SetGameOver()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_TRUE);
-        }
+        PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_TRUE);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Check game over
-        CheckGameOver();
 
         //Check if game over is true, if so set inactive UI prefab to active
         if (PlayerPrefs.GetInt(FLAG_GAME_OVER) == FLAG_VALUE_TRUE)
