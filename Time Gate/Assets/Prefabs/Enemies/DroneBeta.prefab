@@ -71,9 +71,12 @@ MonoBehaviour:
     type: 3}
   firingPoint: {fileID: 2451653422370192372}
   projectileSpeed: 1
+  projectileDamage: 2
+  contactDamage: 5
   rb: {fileID: 415351333280094831}
   maxHealth: 3
   healthBar: {fileID: 3258994930969795774}
+  maxScore: 100
 --- !u!50 &415351333280094831
 Rigidbody2D:
   serializedVersion: 4

@@ -11,10 +11,23 @@ public class PlayerDataCollection : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("Collection running");
         players = new ArrayList();
         playerCount = 0;
         instance = this;
+    }
+
+    public bool RemovePlayerData(int playerNum)
+    {
+        foreach (PlayerData data in players)
+        {
+            if (data.playerID == playerNum)
+            {
+                players.Remove(data);
+                return true;
+            }
+
+        }
+        return false;
     }
 
     public PlayerData GetPlayerData(int playerNum)
@@ -38,7 +51,6 @@ public class PlayerDataCollection : MonoBehaviour
             playerCount++;
         }
         averagePosition = CalculateAveragePosition();
-        Debug.Log(averagePosition);
     }
 
     public int GetNumPlayers()
@@ -63,7 +75,10 @@ public class PlayerDataCollection : MonoBehaviour
         int count = 0;
         foreach(PlayerData player in players)
         {
-            if (player.isActive)
+            if(player == null)
+            {
+                players.Remove(player);
+            }else if (player.isActive)
             {
                 count++;
             }

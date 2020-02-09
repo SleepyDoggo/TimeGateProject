@@ -21,6 +21,9 @@ public class DroneAIBeta2 : MonoBehaviour
 
     public float projectileSpeed = 10;
 
+    public int projectileDamage = 2;
+    public int contactDamage = 5;
+
     //fields required for health and dying.
     public Rigidbody2D rb;
     private int health;
@@ -28,6 +31,10 @@ public class DroneAIBeta2 : MonoBehaviour
     public int maxHealth;
 
     public GameObject healthBar;
+
+    //this value is how much they are worth per shot, this way score isnt done on a per enemy basis.
+    public int maxScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,11 +110,12 @@ public class DroneAIBeta2 : MonoBehaviour
         //TODO
         GameObject obj = Instantiate(projectile, firingPoint.transform.position,Quaternion.identity);
         obj.transform.parent = null;
+        obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
         obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
 
     }
 
-    void TakeDamage(int damage)
+    void TakeDamage(int damage, PlayerData data)
     {
         healthBar.SetActive(health != maxHealth);
         health = health - damage;
@@ -115,7 +123,9 @@ public class DroneAIBeta2 : MonoBehaviour
         healthBar.GetComponentInChildren<HealthPercent>().percent = ((health*1f) / maxHealth) * 100;
         if(health <= 0)
         {
-            //destroy the player
+            //give score to whoever gave the hit
+            data.AddToScore(maxScore);
+            //destroy the enemy
             Destroy(this.gameObject);
         }
     }
@@ -128,7 +138,12 @@ public class DroneAIBeta2 : MonoBehaviour
         {
             int damage = collision.gameObject.GetComponent<ProjectileDamage>().GetDamage();
             Destroy(collision.gameObject);
-            TakeDamage(damage);
+            TakeDamage(damage, collision.gameObject.GetComponent<ProjectileDamage>().GetPlayerData());
         }
+    }
+
+    public int GetContactDamage()
+    {
+        return contactDamage;
     }
 }

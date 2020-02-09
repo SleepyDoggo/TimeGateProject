@@ -5,35 +5,58 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public float MaxHealth { get; set; }
+    private float MaxHealth { get; set; }
     public float Health { get; set; }
     public Slider playerHealthBar;
+    public Text scoreText;
+    public int score;
     [Range(1,4)]
     public int playerNum;
     private PlayerData data;
 
     // Start is called before the first frame update
-    void Start()
+    public void initialize()
     {
         //establishes health bar at start of game
         MaxHealth = 100f;
         Health = MaxHealth;
-        playerHealthBar.value = CalculateHealth();
-        data = PlayerDataCollection.instance.GetPlayerData(playerNum - 1);
-        Debug.Log(data.isActive);
-        this.gameObject.SetActive(data.isActive);
+        score = 0;
+        Debug.Log(PlayerDataCollection.instance.GetNumPlayers());
+        data = PlayerDataCollection.instance.GetPlayerData(playerNum-1);
+        this.gameObject.SetActive(data != null);
+        if (data != null && data.isActive)
+        {
+            MaxHealth = data.maxPlayerHealth;
+            Health = MaxHealth;
+            playerHealthBar.value = CalculateHealth();
+            score = 0;
+        }
     }
 
     //calculates current health 
     float CalculateHealth()
     {
-        Health = data.playerHealth;
+        
+        Health = data.GetHealth();
         return Health / MaxHealth;
+    }
+
+    //calculates current score 
+    int CalculateScore()
+    {
+        score = data.GetScore();
+        return score;
     }
 
     //This is where denemy collision damaged will be handled
     void Update()
     {
-        CalculateHealth();
+        //Debug.Log(PlayerDataCollection.instance.GetPlayerData(1));
+        if (data != null)
+        {
+            playerHealthBar.value = CalculateHealth();
+            score = CalculateScore();
+            scoreText.text = score.ToString("000000");
+        }
     }
 }
