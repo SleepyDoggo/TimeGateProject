@@ -30,4 +30,13 @@ public class CameraFollow : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
         transform.position = smoothedPosition;
     }
+
+    void LateUpdate()
+    {
+        //check if game over
+        if(PlayerDataCollection.instance.GetNumPlayers() == 0)
+        {
+            GameState.SetGameOver();
+        }
+    }
 }
