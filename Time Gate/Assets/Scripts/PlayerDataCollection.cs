@@ -16,6 +16,20 @@ public class PlayerDataCollection : MonoBehaviour
         instance = this;
     }
 
+    public bool RemovePlayerData(int playerNum)
+    {
+        foreach (PlayerData data in players)
+        {
+            if (data.playerID == playerNum)
+            {
+                players.Remove(data);
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public PlayerData GetPlayerData(int playerNum)
     {
         foreach(PlayerData data in players)
