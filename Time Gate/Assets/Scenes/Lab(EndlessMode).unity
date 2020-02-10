@@ -1571,6 +1571,12 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5526393660822921180, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5792889199956690718, guid: df2e62b64e2a2ed4bbefad612c3f5fee,
+        type: 3}
     - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
@@ -1761,6 +1767,12 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5526393660822921180, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5792889199956690718, guid: df2e62b64e2a2ed4bbefad612c3f5fee,
+        type: 3}
     - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
@@ -2031,6 +2043,12 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5526393660822921180, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5792889199956690718, guid: df2e62b64e2a2ed4bbefad612c3f5fee,
+        type: 3}
     - target: {fileID: 5448657667082842715, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: playerNumber
@@ -2820,7 +2838,7 @@ Canvas:
   m_GameObject: {fileID: 947693862}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1334474925}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -10026,7 +10044,7 @@ PrefabInstance:
     - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
         type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 5.8561153
       objectReference: {fileID: 0}
     - target: {fileID: 226287532371478483, guid: 2191b9ec21dbdaa44893358fde5275c7,
         type: 3}
@@ -26917,6 +26935,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBeta
       objectReference: {fileID: 0}
+    - target: {fileID: 1541343859789430651, guid: df0db5c5d6d5e4344b043e1fa75a917b,
+        type: 3}
+      propertyPath: maxPlayerHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1831499640604466639, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26981,11 +27004,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541343859789430651, guid: df0db5c5d6d5e4344b043e1fa75a917b,
-        type: 3}
-      propertyPath: maxPlayerHealth
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2181712263751168115, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}

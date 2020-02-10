@@ -29,8 +29,6 @@ public class GameState : MonoBehaviour
     {
         //TestMultiplayer();
         PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
-        //TestMultiplayer();
-        TestSinglePlayer();
         InitializePlayers();
         InitializeUI();
         ContinueGame();
@@ -130,7 +128,7 @@ public class GameState : MonoBehaviour
         PlayerPrefs.SetInt(FLAG_MULTIPLAYER,FLAG_VALUE_TRUE);
     }
 
-    void ResetFlags()
+    public static void  ResetFlags()
     {
         PlayerPrefs.DeleteAll();
     }
