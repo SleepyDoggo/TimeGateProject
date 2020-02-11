@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Game_Over_Screen : MonoBehaviour
 {
+    public int restartScene = 1;
 
     public void Restart()
     {
-        SceneManager.LoadScene(sceneBuildIndex: 1);
+        SceneManager.LoadScene(sceneBuildIndex: restartScene);
     }
 
     public void BackToMenu()
