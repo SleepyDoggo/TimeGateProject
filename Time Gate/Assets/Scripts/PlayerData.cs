@@ -39,7 +39,7 @@ public class PlayerData : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             //get the damage from it, and damage
-            Damage(collision.gameObject.GetComponent<DroneAIBeta2>().GetContactDamage());
+            Damage(collision.gameObject.GetComponent<EnemyAI>().GetContactDamage());
 
             //knock back on enemies.
             //calculate angle
@@ -63,6 +63,7 @@ public class PlayerData : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Damage(collision.gameObject.GetComponent<EnemyAI>().GetContactDamage());
             Vector2 point = collision.contacts[0].point;
             Vector2 direction = new Vector2( rb.transform.position.x, rb.transform.position.y)-point;
             if (!knocked)

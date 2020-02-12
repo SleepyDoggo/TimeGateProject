@@ -46,10 +46,10 @@ public class EndlessSpawner : MonoBehaviour
                 Debug.Log(spawnLocations[spawnIndex].transform.position);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                DroneAIBeta2[] drones = tmp.GetComponentsInChildren<DroneAIBeta2>();
-                for (int i = 0; i < drones.Length; i++) { 
-                    drones[i].positionToTrack = playerPositionReference;
-                    Debug.Log(drones[i].transform.position);
+                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
+                for (int i = 0; i < drones.Length; i++)
+                {
+                    drones[i].SetTrackingPosition(playerPositionReference);
                 }
             }
         }
@@ -63,10 +63,10 @@ public class EndlessSpawner : MonoBehaviour
                 int spawnIndex = Random.Range(0, spawnLocations.Length);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                DroneAIBeta2[] drones = tmp.GetComponentsInChildren<DroneAIBeta2>();
+                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
                 for (int i = 0; i < drones.Length; i++)
                 {
-                    drones[i].positionToTrack = playerPositionReference;
+                    drones[i].SetTrackingPosition(playerPositionReference);
                 }
             }
         }
@@ -80,10 +80,10 @@ public class EndlessSpawner : MonoBehaviour
                 int spawnIndex = Random.Range(0, spawnLocations.Length);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                DroneAIBeta2[] drones = tmp.GetComponentsInChildren<DroneAIBeta2>();
+                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
                 for (int i = 0; i < drones.Length; i++)
                 {
-                    drones[i].positionToTrack = playerPositionReference;
+                    drones[i].SetTrackingPosition(playerPositionReference);
                 }
             }
         }
