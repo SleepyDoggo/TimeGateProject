@@ -35,6 +35,9 @@ public class DroneAIBeta2 : MonoBehaviour
     //this value is how much they are worth per shot, this way score isnt done on a per enemy basis.
     public int maxScore;
 
+    [Range(0,2)]
+    public float shootWaitTime = 0.66f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,21 +85,21 @@ public class DroneAIBeta2 : MonoBehaviour
             //normalize tracking vector and move enemy
             transform.position += new Vector3(trackingVector.normalized.x * movementSpeed*Time.deltaTime, 
                 trackingVector.normalized.y * movementSpeed*Time.deltaTime,
-                transform.position.z);
+                0);
 
         }
     }
 
     void WaitToShoot()
     {
-        if(waitingTimer > 0.66f)
+        if(waitingTimer > shootWaitTime)
         {
             //stop waiting
             isWaiting = false;
             waitingTimer = 0;
             shot = false;
             isMoving = true;
-        }else if(waitingTimer > 0.33f && !shot)
+        }else if(waitingTimer > shootWaitTime/2.0f && !shot)
         {
             //shoot
             shot = true;

@@ -59,6 +59,7 @@ public class PlayerData : MonoBehaviour
 
     void Die()
     {
+        PlayerDataCollection.instance.RemovePlayerData(this.playerID);
         Destroy(this.gameObject);
     }
 
