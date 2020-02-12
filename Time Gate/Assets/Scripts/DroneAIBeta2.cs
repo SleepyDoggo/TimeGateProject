@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneAIBeta2 : MonoBehaviour
+public class DroneAIBeta2 : MonoBehaviour, EnemyAI
 {
     //fields required for movement
     public float minDistanceFromUser = 10;
@@ -48,7 +48,10 @@ public class DroneAIBeta2 : MonoBehaviour
         waitingTimer = 0;
         health = maxHealth;
     }
-
+    public void SetTrackingPosition(Transform position)
+    {
+        positionToTrack = position;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -118,7 +121,7 @@ public class DroneAIBeta2 : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage, PlayerData data)
+    public void TakeDamage(int damage, PlayerData data)
     {
         healthBar.SetActive(health != maxHealth);
         health = health - damage;
