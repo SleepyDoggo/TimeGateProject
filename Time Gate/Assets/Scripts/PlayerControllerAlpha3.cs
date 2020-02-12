@@ -10,6 +10,7 @@ public class PlayerControllerAlpha3 : MonoBehaviour
     private float rotation;
     public Animator animator;
     private FlipOnMousePosition checkIfFlipped;
+    public PlayerData myData;
 
     [Range(1,4)]
     public int playerNumber = 1;
@@ -50,6 +51,11 @@ public class PlayerControllerAlpha3 : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        //rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        if (!myData.isKnocked())
+        {
+            //rb.velocity = moveInput * moveSpeed;
+            rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 }
