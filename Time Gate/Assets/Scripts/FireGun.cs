@@ -52,7 +52,7 @@ public class FireGun : MonoBehaviour
             //implement ai firing later
         }
 
-        if(isFiring && !firingLock)
+        if(isFiring && !firingLock && (Time.timeScale != 0))
         {
             //fire the bullet
             StartCoroutine(fire());
