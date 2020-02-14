@@ -8,6 +8,13 @@ public class NPC : MonoBehaviour
     private int playerNum;
     [Range(0,3)]
     public int targetDirection;
+
+    public GameObject dialogPicture;
+    public string name;
+
+    //public Script script
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +27,7 @@ public class NPC : MonoBehaviour
     {
         //check if the player with the playernum has pressed the interact button, only
         //if they have been approached.
+        //TODO - Stop time when opening dialog, and actually doing the dialog.
         if (approached)
         {
             if(Input.GetButtonDown("Player" + (playerNum+1) + "AButton") || Input.GetKeyDown("space"))
@@ -29,6 +37,16 @@ public class NPC : MonoBehaviour
             }
         }
     }
+
+    void TriggerDialog()
+    {
+        //Get the dialog box
+
+        //Set all the values
+
+        //hand off the script
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //check if the thing is a player, get their player number
