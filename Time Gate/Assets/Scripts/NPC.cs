@@ -10,7 +10,10 @@ public class NPC : MonoBehaviour
     public int targetDirection;
 
     public GameObject dialogPicture;
-    public string name;
+    public string myname;
+    public string[] message;
+    private GameObject thedialog;
+    private bool triggered;
 
     //public Script script
 
@@ -20,6 +23,15 @@ public class NPC : MonoBehaviour
     {
         approached = false;
         playerNum = -1;
+        //extra step with the game canvas necessary because the dialog box starts as inactive,
+        //and find does not find them
+        thedialog = GameObject.Find("GameCanvas").transform.Find("DialogBox").gameObject;
+        triggered = false;
+    }
+
+    public void ReActivate()
+    {
+        triggered = false;
     }
 
     // Update is called once per frame
@@ -28,23 +40,29 @@ public class NPC : MonoBehaviour
         //check if the player with the playernum has pressed the interact button, only
         //if they have been approached.
         //TODO - Stop time when opening dialog, and actually doing the dialog.
-        if (approached)
+        if (approached && !triggered)
         {
             if(Input.GetButtonDown("Player" + (playerNum+1) + "AButton") || Input.GetKeyDown("space"))
             {
-                //start the dialog
-                Debug.Log("The dialog should be triggered");
+
+                //trigger the dialog, pass the script
+                Debug.Log("triggering");
+                TriggerDialog();
+                triggered = true;
+                
             }
         }
     }
 
     void TriggerDialog()
     {
-        //Get the dialog box
-
         //Set all the values
-
-        //hand off the script
+        Dialog dialog = thedialog.GetComponent<Dialog>();
+        dialog.SetMessage(message, playerNum, this);
+        dialog.SetName(name);
+        //TODO - set image
+        //dialog.SetImage(dialogImage);
+        dialog.displayMessage();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,7 +80,6 @@ public class NPC : MonoBehaviour
                 if (IsRightDirection(direction))
                 {
                     approached = true;
-                    Debug.Log(approached);
                     playerNum = collision.gameObject.GetComponent<PlayerData>().playerID;
                 }
                 
