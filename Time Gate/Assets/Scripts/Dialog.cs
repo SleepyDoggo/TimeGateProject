@@ -53,10 +53,12 @@ public class Dialog : MonoBehaviour
             messageCounter = 0;
             gameObject.SetActive(false);
             npc.ReActivate();
+            Time.timeScale = 1;
         }
         else
         {
             gameObject.SetActive(true);
+            Time.timeScale = 0;
             UpdateText(message[messageCounter]);
             messageCounter++;
         }
