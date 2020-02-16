@@ -7,17 +7,24 @@ public class Dialog : MonoBehaviour
 {
     public Text NPCName, NPCText;
     public GameObject NPCPicture;
+    private NPC npc;
+    private string[] message;
+    private int messageCounter;
+    private int playerNumber;
     //public Script script;
     // Start is called before the first frame update
     void Start()
     {
-        
+        messageCounter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Player" + (playerNumber + 1) + "AButton") || Input.GetKeyDown("space"))
+        {
+            displayMessage();
+        }
     }
 
     public void SetName(string name)
@@ -29,6 +36,30 @@ public class Dialog : MonoBehaviour
     {
         NPCText.text = text;
         //TODO - cool animation
+    }
+
+    public void SetMessage(string[] newMessage, int playerNum, NPC them)
+    {
+        message = newMessage;
+        npc = them;
+        playerNumber = playerNum;
+    }
+
+    public void displayMessage()
+    {
+        if(messageCounter >= message.Length)
+        {
+            //reset count and dissapear
+            messageCounter = 0;
+            gameObject.SetActive(false);
+            npc.ReActivate();
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            UpdateText(message[messageCounter]);
+            messageCounter++;
+        }
     }
 
     public void SetImage(GameObject obj)
