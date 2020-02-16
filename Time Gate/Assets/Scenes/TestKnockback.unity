@@ -2425,7 +2425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682647870}
   m_Layer: 5
-  m_Name: NPCImage
+  m_Name: NPC Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2986,7 +2986,7 @@ Canvas:
   m_GameObject: {fileID: 947693862}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 1334474925}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -3280,7 +3280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDirection: 2
   dialogPicture: {fileID: 0}
-  name: 
+  myname: 
+  message:
+  - Hello
+  - World
 --- !u!1 &1140870270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7228352153625435993, guid: 1e085e4b3f2c4b6469505a73205b2849,
@@ -3530,9 +3533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3db023b1250094db6d9c85934aa357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCName: {fileID: 0}
-  NPCText: {fileID: 0}
-  NPCPicture: {fileID: 0}
+  NPCName: {fileID: 2035532558}
+  NPCText: {fileID: 463996819}
+  NPCPicture: {fileID: 682647869}
 --- !u!50 &1401995873 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5448657667082842718, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
@@ -10751,7 +10754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.23, y: -150}
+  m_AnchoredPosition: {x: 0.22999954, y: -150}
   m_SizeDelta: {x: -7.92, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884805324
