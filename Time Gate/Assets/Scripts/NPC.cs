@@ -46,7 +46,6 @@ public class NPC : MonoBehaviour
             {
 
                 //trigger the dialog, pass the script
-                Debug.Log("triggering");
                 TriggerDialog();
                 triggered = true;
                 
@@ -59,7 +58,7 @@ public class NPC : MonoBehaviour
         //Set all the values
         Dialog dialog = thedialog.GetComponent<Dialog>();
         dialog.SetMessage(message, playerNum, this);
-        dialog.SetName(name);
+        dialog.SetName(myname);
         //TODO - set image
         //dialog.SetImage(dialogImage);
         dialog.displayMessage();
