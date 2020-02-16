@@ -3280,7 +3280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDirection: 2
   dialogPicture: {fileID: 0}
-  myname: 
+  myname: First NPC
   message:
   - Hello
   - World
