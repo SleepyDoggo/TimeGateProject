@@ -58,5 +58,9 @@ public class PlayerUI : MonoBehaviour
             score = CalculateScore();
             scoreText.text = score.ToString("000000");
         }
+        else
+        {
+            playerHealthBar.value = 0;
+        }
     }
 }
