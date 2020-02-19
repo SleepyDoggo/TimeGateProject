@@ -1466,16 +1466,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerBeta (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_Enabled
@@ -1501,6 +1491,16 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 647247905}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerBeta (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1677,16 +1677,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerBeta (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: isActive
@@ -1707,6 +1697,16 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1318521320}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerBeta (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1958,16 +1958,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerBeta (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5157952452542599380, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_Enabled
@@ -1993,6 +1983,16 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 688466097}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerBeta (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448657667082842722, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448657667082842720, guid: cd81c90858fe9ed43a4a25e3ffc966e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3235,10 +3235,10 @@ MonoBehaviour:
   - {fileID: 688466101}
   - {fileID: 647247909}
   offset: {x: 0, y: 0, z: -10}
-  smoothTime: 0.5
-  minCamSize: 5
-  maxCamSize: 180
-  sizeLimiter: 190
+  smoothTime: 0.11
+  minCamSize: 6
+  maxCamSize: 10
+  sizeLimiter: 10
 --- !u!20 &1334474925 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
@@ -27034,6 +27034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBeta
       objectReference: {fileID: 0}
+    - target: {fileID: 1831499640604466637, guid: df0db5c5d6d5e4344b043e1fa75a917b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1541343859789430651, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}
       propertyPath: maxPlayerHealth
@@ -27042,12 +27047,12 @@ PrefabInstance:
     - target: {fileID: 1831499640604466639, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.62
+      value: -33.36
       objectReference: {fileID: 0}
     - target: {fileID: 1831499640604466639, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.71
+      value: -10.17
       objectReference: {fileID: 0}
     - target: {fileID: 1831499640604466639, guid: df0db5c5d6d5e4344b043e1fa75a917b,
         type: 3}
