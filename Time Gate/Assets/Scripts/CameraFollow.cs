@@ -25,10 +25,18 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log(target);
-        target = PlayerDataCollection.instance.averagePosition;
-        Vector3 targetPosition = new Vector3(target.x, target.y, target.z + zOffset);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        if(target != null)
+        {
+            target = PlayerDataCollection.instance.averagePosition;
+            Vector3 targetPosition = new Vector3(target.x, target.y, target.z + zOffset);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+        }
+        else
+        {
+            return;
+        }
+
     }
 
     void LateUpdate()
