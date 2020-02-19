@@ -596,7 +596,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 5377176256900481330}
   m_FillRect: {fileID: 5377176256900481331}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -1829,6 +1829,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5377176256233918719}
     m_Modifications:
+    - target: {fileID: 2910983001007748692, guid: 7ee866d97753d73478c15f208ca6563c,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910983001007748692, guid: 7ee866d97753d73478c15f208ca6563c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2910983001007748695, guid: 7ee866d97753d73478c15f208ca6563c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1933,16 +1943,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2910983001007748692, guid: 7ee866d97753d73478c15f208ca6563c,
-        type: 3}
-      propertyPath: m_Name
-      value: Player1UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2910983001007748692, guid: 7ee866d97753d73478c15f208ca6563c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2910983000504415831, guid: 7ee866d97753d73478c15f208ca6563c,
         type: 3}
