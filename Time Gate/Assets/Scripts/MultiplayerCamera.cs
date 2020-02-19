@@ -22,11 +22,14 @@ public class MultiplayerCamera : MonoBehaviour
     {
         if (targets.Count == 0)
         {
-            return;
+            GameState.SetGameOver();
+        }
+        else
+        {
+            Move();
+            Zoom();
         }
 
-        Move();
-        Zoom();
 
     }
 
@@ -61,7 +64,14 @@ public class MultiplayerCamera : MonoBehaviour
 
     Vector3 GetCenterPoint()
     {
-        if(targets.Count == 1)
+
+        if(targets[0] == null)
+        {
+            targets.Remove(targets[0]);
+        }
+
+
+        if (targets.Count == 1)
         {
             return targets[0].position;
         }
@@ -72,6 +82,10 @@ public class MultiplayerCamera : MonoBehaviour
             if(targets[i] != null)
             {
                 bounds.Encapsulate(targets[i].position);
+            }
+            else
+            {
+                targets.Remove(targets[i]);
             }
             
         }
