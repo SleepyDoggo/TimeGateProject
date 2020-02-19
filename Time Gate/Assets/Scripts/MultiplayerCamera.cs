@@ -17,9 +17,18 @@ public class MultiplayerCamera : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        for(int i = targets.Count - 1; i >= 0; i--)
+        {
+            if(!targets[i].gameObject.active)
+            {
+                targets.Remove(targets[i]);
+            }
+
+        }
     }
     void LateUpdate()
     {
+
         if (targets.Count == 0)
         {
             GameState.SetGameOver();
