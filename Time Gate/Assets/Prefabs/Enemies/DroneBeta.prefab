@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2451653421188473981}
-  - component: {fileID: 2451653421188473980}
-  - component: {fileID: 2451653421188473983}
   - component: {fileID: 415351333280094831}
-  - component: {fileID: 1785724233730415180}
-  m_Layer: 0
+  - component: {fileID: 1047994263913428941}
+  - component: {fileID: 8040698329505316324}
+  - component: {fileID: 4277640247892701824}
+  m_Layer: 12
   m_Name: DroneBeta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -37,47 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2451653421188473980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2451653421188473978}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5998a7956e5aa49a2fc5512cd7cfa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  player: {fileID: 0}
---- !u!114 &2451653421188473983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2451653421188473978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0dc22e145473e43af2459424024ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDistanceFromUser: 20
-  movementSpeed: 2.5
-  positionToTrack: {fileID: 0}
-  shootingFrequency: 3
-  projectile: {fileID: 2893549319314309102, guid: 5844d4e9ffb55b74baeb3d1175089b1c,
-    type: 3}
-  firingPoint: {fileID: 2451653422370192372}
-  projectileSpeed: 1
-  projectileDamage: 2
-  contactDamage: 5
-  rb: {fileID: 415351333280094831}
-  maxHealth: 3
-  healthBar: {fileID: 3258994930969795774}
-  maxScore: 100
-  shootWaitTime: 0.66
 --- !u!50 &415351333280094831
 Rigidbody2D:
   serializedVersion: 4
@@ -86,21 +45,75 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2451653421188473978}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.3
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &1785724233730415180
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!114 &1047994263913428941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451653421188473978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &8040698329505316324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451653421188473978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e521ce956f9445bc8014a0c7bd95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistanceFromUser: 20
+  movementSpeed: 4
+  shootingFrequency: 3
+  projectile: {fileID: 2893549319314309102, guid: 5844d4e9ffb55b74baeb3d1175089b1c,
+    type: 3}
+  firingPoint: {fileID: 2451653422370192372}
+  projectileSpeed: 1
+  projectileDamage: 2
+  contactDamage: 5
+  shootWaitTime: 0.66
+  maxHealth: 3
+  healthBar: {fileID: 3258994930969795774}
+  maxScore: 100
+  nextWaypointDistance: 0.5
+--- !u!58 &4277640247892701824
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,19 +125,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.57247186, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.3550563, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.62
 --- !u!1 &2451653421426395348
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +139,7 @@ GameObject:
   - component: {fileID: 2451653421426395353}
   - component: {fileID: 2451653421426395350}
   - component: {fileID: 2451653421426395351}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DroneBetaSprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -151,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2451653421426395348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.57, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 2451653421188473981}
@@ -235,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2451653422370192375}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2451653422370192372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: -0.51, z: 0}
+  m_LocalPosition: {x: 0.42, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2451653421188473981}
@@ -272,6 +275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489040170297390961, guid: 285477330ea70ab4281a367221a84675,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2849622062840917634, guid: 285477330ea70ab4281a367221a84675,
         type: 3}
@@ -327,6 +335,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655791045145035637, guid: 285477330ea70ab4281a367221a84675,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008369077101937137, guid: 285477330ea70ab4281a367221a84675,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820426530516451487, guid: 285477330ea70ab4281a367221a84675,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285477330ea70ab4281a367221a84675, type: 3}

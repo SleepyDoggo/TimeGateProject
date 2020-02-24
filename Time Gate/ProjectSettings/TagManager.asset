@@ -17,10 +17,10 @@ TagManager:
   - 
   - 
   - Player Layer
-  - 
-  - 
-  - 
-  - 
+  - WallObstacles
+  - OtherObstacles
+  - VoidObstacles
+  - Enemy Layer
   - 
   - 
   - 
