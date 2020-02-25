@@ -13,6 +13,7 @@ public class MultiplayerCamera : MonoBehaviour
     public float maxCamSize = 16f;
     public float sizeLimiter = 30f;
     private Camera cam;
+    private bool over = false;
 
     void Start()
     {
@@ -26,18 +27,37 @@ public class MultiplayerCamera : MonoBehaviour
 
         }
     }
+
+    /*
+    private void Update()
+    {
+
+        
+    }
+    */
+
     void LateUpdate()
     {
 
-        if (targets.Count == 0)
+
+        if (targets.Count == 1)
         {
-            GameState.SetGameOver();
+            
+            if(targets[0] == null)
+            {
+                GameState.SetGameOver();
+                over = true;
+            }
+            
         }
-        else
+
+        if(!over)
         {
             Move();
             Zoom();
         }
+
+
 
 
     }
@@ -84,6 +104,7 @@ public class MultiplayerCamera : MonoBehaviour
         {
             return targets[0].position;
         }
+
 
         var bounds = new Bounds(targets[0].position, Vector3.zero);
         for (int i = 0; i < targets.Count; i++)
