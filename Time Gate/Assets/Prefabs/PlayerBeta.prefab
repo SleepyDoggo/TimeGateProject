@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   playerID: 0
-  maxPlayerHealth: 0
+  maxPlayerHealth: 5
   rb: {fileID: 0}
 --- !u!1001 &1113749728476876574
 PrefabInstance:
