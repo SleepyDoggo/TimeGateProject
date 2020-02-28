@@ -27695,5 +27695,10 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1831499640250383559, guid: df0db5c5d6d5e4344b043e1fa75a917b,
+        type: 3}
+      propertyPath: m_Name
+      value: BBG
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0db5c5d6d5e4344b043e1fa75a917b, type: 3}

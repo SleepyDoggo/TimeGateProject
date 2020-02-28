@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireGun : MonoBehaviour
+public class FireGun : MonoBehaviour, GunInterface
 {
     //muzzlefire specified on a per weapon basis
     public GameObject muzzleFire;
@@ -59,7 +59,7 @@ public class FireGun : MonoBehaviour
         }
     }
 
-    IEnumerator fire()
+    public IEnumerator fire()
     {
         firingLock = true;
         //display the prefab
