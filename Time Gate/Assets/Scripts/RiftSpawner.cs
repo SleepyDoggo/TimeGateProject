@@ -8,7 +8,7 @@ public class RiftSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     public int numRifts;
     public GameObject rift;
-    void Start()
+    public GameObject[] Initialize()
     {
         //put a rift into the number of rifts specified, pick randomly from spawnPoints;
 
@@ -18,7 +18,7 @@ public class RiftSpawner : MonoBehaviour
         }
 
         int[] indeces = FindIndeces();
-        SpawnRifts(indeces);
+        return SpawnRifts(indeces);
     }
 
     // Update is called once per frame
@@ -43,15 +43,20 @@ public class RiftSpawner : MonoBehaviour
         return indeces;
     }
 
-    void SpawnRifts(int[] indeces) {
+    GameObject[] SpawnRifts(int[] indeces) {
+        GameObject[] rifts = new GameObject[numRifts];
+        int counter = 0;
         foreach (int index in indeces) {
-            SpawnRift(index);
+            rifts[counter] = SpawnRift(index);
+            counter++;
         }
+        return rifts;
     }
 
-    void SpawnRift(int index)
+    GameObject SpawnRift(int index)
     {
         GameObject tmp = Instantiate(rift, spawnPoints[index].transform);
         tmp.transform.position = spawnPoints[index].transform.position;
+        return tmp;
     }
 }
