@@ -22,6 +22,9 @@ public class GameState : MonoBehaviour
     public GameObject GameOver;
     public GameObject ui;
 
+    public RiftSpawner spawner;
+    public RiftState riftState;
+
 
 
     // Start is called before the first frame update
@@ -32,6 +35,8 @@ public class GameState : MonoBehaviour
         InitializePlayers();
         InitializeUI();
         ContinueGame();
+        GameObject[] rifts = spawner.Initialize();
+        riftState.Initialize(rifts);
     }
 
     void InitializeUI()
@@ -157,5 +162,10 @@ public class GameState : MonoBehaviour
     {
         PlayerPrefs.SetInt(FLAG_MULTIPLAYER, FLAG_VALUE_FALSE);
         Debug.Log("Multiplayer: " + PlayerPrefs.GetInt(FLAG_MULTIPLAYER));
+    }
+
+    public bool IsMissionComplete()
+    {
+        return riftState.IsMissionComplete();
     }
 }
