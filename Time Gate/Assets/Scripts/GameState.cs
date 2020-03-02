@@ -168,4 +168,8 @@ public class GameState : MonoBehaviour
     {
         return riftState.IsMissionComplete();
     }
+    public Vector2Int RiftsDestroyed()
+    {
+        return new Vector2Int(riftState.GetNumRiftsDestroyed(), riftState.GetNumRifts());
+    }
 }

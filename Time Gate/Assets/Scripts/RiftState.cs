@@ -41,4 +41,13 @@ public class RiftState : MonoBehaviour
     {
         return complete;
     }
+    
+    public int GetNumRifts()
+    {
+        return rifts.Length;
+    }
+    public int GetNumRiftsDestroyed()
+    {
+        return numDestroyed;
+    }
 }
