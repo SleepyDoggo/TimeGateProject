@@ -42,9 +42,13 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
 
     //variables related to animating
     bool flipped;
+    public Animator animator;
+    bool dead;
 
     //variables associated with audio playing
     public AudioSource shootSound, deathSound;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +61,7 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
         waitingTimer = 0;
         health = maxHealth;
         flipped = false;
-
+        dead = false;
         //initialize all variables related to pathfinding.
         rb = GetComponent<Rigidbody2D>();
         SetTrackingPosition(rb.transform);
@@ -121,9 +125,16 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
             shootingTimer = 0;
             isWaiting = true;
         }
-
-        MoveEnemy();
-        WaitToShoot();
+        if (dead)
+        {
+            Debug.Log(animator.GetBool("Dead"));
+            return;
+        }
+        else
+        {
+            MoveEnemy();
+            WaitToShoot();
+        }
 
     }
 
@@ -220,9 +231,13 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     {
         //destroy the enemy
         deathSound.Play();
+        dead = true;
+        animator.SetBool("Dead", dead);
+        rb.velocity = Vector2.zero;
+        healthBar.SetActive(false);
 
         //turn on explosion animation, and die when its done, after a time.
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 0.6f);
     }
 
     //use ontriggerenter not oncollisionenter if using istrigger
