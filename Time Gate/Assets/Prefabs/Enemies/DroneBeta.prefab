@@ -111,7 +111,7 @@ MonoBehaviour:
   maxHealth: 3
   healthBar: {fileID: 3258994930969795774}
   maxScore: 100
-  nextWaypointDistance: 0.5
+  nextWaypointDistance: 0.25
 --- !u!58 &4277640247892701824
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 647350985
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 9148800814639467426, guid: 76063d8a85ffbbb4c8e01b60b290b871,
     type: 3}
