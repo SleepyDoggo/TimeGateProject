@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class DroneAI : MonoBehaviour, EnemyAI
+public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
 {
     //fields required for movement
     public float minDistanceFromUser = 8;
@@ -40,6 +40,12 @@ public class DroneAI : MonoBehaviour, EnemyAI
     bool reachedEndOfPath = false;
     Seeker seeker;
 
+    //variables related to animating
+    bool flipped;
+
+    //variables associated with audio playing
+    public AudioSource shootSound, deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +56,7 @@ public class DroneAI : MonoBehaviour, EnemyAI
         shootingTimer = 0;
         waitingTimer = 0;
         health = maxHealth;
+        flipped = false;
 
         //initialize all variables related to pathfinding.
         rb = GetComponent<Rigidbody2D>();
@@ -62,8 +69,10 @@ public class DroneAI : MonoBehaviour, EnemyAI
 
     void UpdatePath()
     {
-        if(seeker.IsDone())
+        if (seeker.IsDone())
+        {
             seeker.StartPath(rb.position, positionToTrack.position, OnPathComplete);
+        }
     }
 
 
@@ -71,6 +80,10 @@ public class DroneAI : MonoBehaviour, EnemyAI
         if (!p.error) {
             path = p;
             currentWaypoint = 0;
+        }
+        else
+        {
+            Debug.Log("Error");
         }
     }
     //position input not necessary for this object.
@@ -120,7 +133,10 @@ public class DroneAI : MonoBehaviour, EnemyAI
         if (isMoving)
         {
             if (path == null)
+            {
+                Debug.Log("Null path");
                 return;
+            }
             if (currentWaypoint >= path.vectorPath.Count)
             {
                 reachedEndOfPath = true;
@@ -146,6 +162,8 @@ public class DroneAI : MonoBehaviour, EnemyAI
                 //reset velocity
                 rb.velocity = Vector2.zero;
             }
+            Vector2 playerDirection = ((Vector2)positionToTrack.position - rb.position).normalized;
+            flipOnDirection(playerDirection);
 
         }
     }
@@ -176,6 +194,7 @@ public class DroneAI : MonoBehaviour, EnemyAI
         obj.transform.parent = null;
         obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
         obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+        shootSound.Play();
 
     }
 
@@ -191,17 +210,25 @@ public class DroneAI : MonoBehaviour, EnemyAI
         {
             //give score to whoever gave the hit
             data.AddToScore(maxScore);
-            //destroy the enemy
-            Destroy(this.gameObject);
+
+            Die();
             return;
         }
         
+    }
+    void Die()
+    {
+        //destroy the enemy
+        deathSound.Play();
+
+        //turn on explosion animation, and die when its done, after a time.
+        Destroy(this.gameObject);
     }
 
     //use ontriggerenter not oncollisionenter if using istrigger
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Debug.Log("Collided");
         //check tag from collision. Only accept collisions from player_projectile tags
         if (collision.gameObject.CompareTag("player_projectile"))
         {
@@ -214,5 +241,25 @@ public class DroneAI : MonoBehaviour, EnemyAI
     public int GetContactDamage()
     {
         return contactDamage;
+    }
+    //Turns to face the direction it is going
+    void flipOnDirection(Vector2 direction)
+    {
+        Transform tmp = transform.Find("sprite stuff");
+        flipped = tmp.rotation.eulerAngles.y == 180; 
+        
+        if(direction.x < 0 && !flipped)
+        {
+            flipped = !flipped;
+            tmp.Rotate(0f, 180f, 0f);
+        }else if(direction.x > 0 && flipped)
+        {
+            flipped = !flipped;
+            tmp.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    public int GetNumEnemies() {
+        return 1;
     }
 }

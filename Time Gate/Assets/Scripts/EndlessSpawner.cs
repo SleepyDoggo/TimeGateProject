@@ -40,17 +40,19 @@ public class EndlessSpawner : MonoBehaviour
         {
             //check every 15 seconds
             if (Mathf.Round(gameTimer) % 10 == 0 && numEnemies < maxEnemies) {
-                numEnemies += 3;
                 //Transform[] childrenTransforms = transform.GetComponentsInChildren<Transform>();
                 int spawnIndex = Random.Range(0, spawnLocations.Length);
                 Debug.Log(spawnLocations[spawnIndex].transform.position);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
-                for (int i = 0; i < drones.Length; i++)
-                {
-                    drones[i].SetTrackingPosition(playerPositionReference);
-                }
+                Spawnable spawn = tmp.GetComponent<Spawnable>();
+                spawn.SetTrackingPosition(playerPositionReference);
+                numEnemies += spawn.GetNumEnemies();
+                //EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
+                //for (int i = 0; i < drones.Length; i++)
+                //{
+                //    drones[i].SetTrackingPosition(playerPositionReference);
+                //}
             }
         }
         else if (minutes / 60 < 5)
@@ -58,16 +60,19 @@ public class EndlessSpawner : MonoBehaviour
             //check every 10 seconds
             if (Mathf.Round(gameTimer) % 7 == 0)
             {
-                numEnemies += 3;
+                
                 //Transform[] childrenTransforms = transform.GetComponentsInChildren<Transform>();
                 int spawnIndex = Random.Range(0, spawnLocations.Length);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
-                for (int i = 0; i < drones.Length; i++)
-                {
-                    drones[i].SetTrackingPosition(playerPositionReference);
-                }
+                Spawnable spawn = tmp.GetComponent<Spawnable>();
+                spawn.SetTrackingPosition(playerPositionReference);
+                numEnemies += spawn.GetNumEnemies();
+                //EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
+                //for (int i = 0; i < drones.Length; i++)
+                //{
+                //    drones[i].SetTrackingPosition(playerPositionReference);
+                //}
             }
         }
         else
@@ -75,16 +80,18 @@ public class EndlessSpawner : MonoBehaviour
             //check every 5 seconds
             if (Mathf.Round(gameTimer) % 5 == 0)
             {
-                numEnemies += 3;
                 //Transform[] childrenTransforms = transform.GetComponentsInChildren<Transform>();
                 int spawnIndex = Random.Range(0, spawnLocations.Length);
                 GameObject tmp = Instantiate(enemyBundle, spawnLocations[spawnIndex].transform);
                 tmp.transform.position = spawnLocations[spawnIndex].transform.position;
-                EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
-                for (int i = 0; i < drones.Length; i++)
-                {
-                    drones[i].SetTrackingPosition(playerPositionReference);
-                }
+                Spawnable spawn = tmp.GetComponent<Spawnable>();
+                spawn.SetTrackingPosition(playerPositionReference);
+                numEnemies += spawn.GetNumEnemies();
+                //EnemyAI[] drones = tmp.GetComponentsInChildren<EnemyAI>();
+                //for (int i = 0; i < drones.Length; i++)
+                //{
+                //    drones[i].SetTrackingPosition(playerPositionReference);
+                //}
             }
         }
     }
