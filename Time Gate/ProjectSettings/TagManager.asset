@@ -65,6 +65,9 @@ TagManager:
   - name: Shots
     uniqueID: 3991620725
     locked: 0
+  - name: Room Cover
+    uniqueID: 3534520901
+    locked: 0
   - name: ui
     uniqueID: 4266946359
     locked: 0
