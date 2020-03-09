@@ -21,7 +21,6 @@ public class PlayerUI : MonoBehaviour
         MaxHealth = 100f;
         Health = MaxHealth;
         score = 0;
-        Debug.Log(PlayerDataCollection.instance.GetNumPlayers());
         data = PlayerDataCollection.instance.GetPlayerData(playerNum-1);
         this.gameObject.SetActive(data != null);
         if (data != null && data.isActive)
