@@ -22,7 +22,6 @@ public class Spawner : MonoBehaviour
             count++;
         }
         maxEnemies = count+1;
-        Debug.Log("Count: " + count);
         
         checkedEnemies = new bool[maxEnemies];
         for(int i = 0; i < checkedEnemies.Length; i++)
@@ -37,7 +36,6 @@ public class Spawner : MonoBehaviour
 
     public bool IsFinished()
     {
-        Debug.Log("Count: " + count);
         return count == 0;
     }
 

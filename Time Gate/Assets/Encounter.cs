@@ -37,10 +37,8 @@ public class Encounter : MonoBehaviour
 
     void StatusCheck()
     {
-        Debug.Log("Counter: " + counter);
         if (waves[counter].IsCompleted())
         {
-            Debug.Log("Apparantly I am done :" + counter);
             //start next wave
             counter++;
             if (counter == waves.Length)

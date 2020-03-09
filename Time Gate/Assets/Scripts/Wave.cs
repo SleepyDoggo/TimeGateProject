@@ -36,7 +36,6 @@ public class Wave : MonoBehaviour
                 count++;
             }
         }
-        Debug.Log("Count1: " + count);
         isCompleted = count == spawnLocations.Length;//discluding first which is this object
     }
 
