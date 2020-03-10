@@ -25,6 +25,8 @@ public class FireGun : MonoBehaviour, GunInterface
 
     public GameObject projectile;
     public float projectileSpeed = 10;
+
+    public AudioSource src;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +86,7 @@ public class FireGun : MonoBehaviour, GunInterface
         obj.transform.parent = transform;
         obj.transform.localPosition = Vector3.zero;
         cameraToShake.GetComponent<ScreenShake1>().ShakeScreen();
+        src.Play();
         //wait
         yield return new WaitForSeconds(fireRate);
         firingLock = false;
