@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: cc92ffeb97e23dc42a23771dad4737b6, type: 3}
-    totalSpriteSurfaceArea: 153600
+    totalSpriteSurfaceArea: 282082
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -84,6 +84,22 @@ SpriteAtlas:
   - {fileID: 743095246036157115, guid: 0c4dd9b3d7d849f46a96b1a1814558ba, type: 3}
   - {fileID: -5583562087078355054, guid: 0c4dd9b3d7d849f46a96b1a1814558ba, type: 3}
   - {fileID: -4668397285814203545, guid: 0c4dd9b3d7d849f46a96b1a1814558ba, type: 3}
+  - {fileID: 8022073936072514629, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: 1024130334196878290, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: -415431320592787572, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: -606100071516654753, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: -4451579546560413455, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: -8031465768454499750, guid: c991aee7f3fd3f6429665dd243395096, type: 3}
+  - {fileID: 4327701062605405154, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 7176781029951103609, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: -8607432135226868986, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 2234211011403675065, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 8859242198558484925, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 454679752950153941, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: -1491550533742808865, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 2589005861166883726, guid: 80b4f39bffe1eb848b05695538b89478, type: 3}
+  - {fileID: 5052390387134972545, guid: f53d9c9cf22bed94e986469a9068a753, type: 3}
+  - {fileID: 6436073005663625746, guid: f53d9c9cf22bed94e986469a9068a753, type: 3}
   - {fileID: -8491134968955361444, guid: 1fe4ef8fdbdea2146bca2b785dd1ba7e, type: 3}
   - {fileID: -5471256866596326089, guid: 1fe4ef8fdbdea2146bca2b785dd1ba7e, type: 3}
   - {fileID: -2525009579122832612, guid: 1fe4ef8fdbdea2146bca2b785dd1ba7e, type: 3}
@@ -235,6 +251,22 @@ SpriteAtlas:
   - bonusintrotiles_1
   - bonusintrotiles_2
   - bonusintrotiles_3
+  - Cabinets_w_transparency 1_5
+  - Cabinets_w_transparency 1_4
+  - Cabinets_w_transparency 1_3
+  - Cabinets_w_transparency 1_2
+  - Cabinets_w_transparency 1_1
+  - Cabinets_w_transparency 1_0
+  - Cabinets_w_transparency_6
+  - Cabinets_w_transparency_7
+  - Cabinets_w_transparency_4
+  - Cabinets_w_transparency_5
+  - Cabinets_w_transparency_2
+  - Cabinets_w_transparency_3
+  - Cabinets_w_transparency_0
+  - Cabinets_w_transparency_1
+  - lab_table_0
+  - lab_table_1
   - intromapbroken_100
   - intromapbroken_94
   - intromapbroken_95

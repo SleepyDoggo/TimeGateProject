@@ -9,6 +9,7 @@ public class Game_Over_Screen : MonoBehaviour
 
     public void Restart()
     {
+        Debug.Log("sanity check");
         SceneManager.LoadScene(sceneBuildIndex: restartScene);
     }
 

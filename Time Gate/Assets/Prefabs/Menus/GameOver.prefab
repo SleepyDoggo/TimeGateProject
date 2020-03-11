@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f500602f311bb444a17154eb49cc915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartScene: 1
 --- !u!1 &7228352152241144529
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f500602f311bb444a17154eb49cc915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartScene: 1
 --- !u!1 &7228352153610167370
 GameObject:
   m_ObjectHideFlags: 0

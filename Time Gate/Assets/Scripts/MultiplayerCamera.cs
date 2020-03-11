@@ -41,7 +41,11 @@ public class MultiplayerCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        Debug.Log("targets: " + targets[0]);
+        /*foreach(Transform target in targets)
+        {
+            Debug.Log("targets: " + target);
+
+        }*/
 
         if (targets.Count == 1)
         {
