@@ -50,3 +50,5 @@ MonoBehaviour:
   - {fileID: 0}
   GameOver: {fileID: 0}
   ui: {fileID: 0}
+  spawner: {fileID: 0}
+  riftState: {fileID: 0}
