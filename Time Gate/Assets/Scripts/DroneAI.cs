@@ -113,6 +113,8 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     void FixedUpdate()
     {
         //get distance from tracking position(squared to make more efficient)
+        if (positionToTrack == null)
+            return;
         trackingVector = positionToTrack.position - transform.position;
         float distanceFromUserSquared = Mathf.Pow(trackingVector.x, 2) + Mathf.Pow(trackingVector.y, 2);
         isMoving = distanceFromUserSquared > minDistanceFromUser && !isWaiting;
