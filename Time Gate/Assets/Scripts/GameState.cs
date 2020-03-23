@@ -35,8 +35,11 @@ public class GameState : MonoBehaviour
         InitializePlayers();
         InitializeUI();
         ContinueGame();
-        GameObject[] rifts = spawner.Initialize();
-        riftState.Initialize(rifts);
+        if (spawner != null)
+        {
+            GameObject[] rifts = spawner.Initialize();
+            riftState.Initialize(rifts);
+        }
     }
 
     void InitializeUI()
@@ -108,7 +111,6 @@ public class GameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Check if game over is true, if so set inactive UI prefab to active
         if (PlayerPrefs.GetInt(FLAG_GAME_OVER) == FLAG_VALUE_TRUE)
         {

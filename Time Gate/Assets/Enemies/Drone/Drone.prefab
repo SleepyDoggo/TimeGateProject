@@ -152,9 +152,9 @@ MonoBehaviour:
   projectile: {fileID: 2893549319314309102, guid: 5844d4e9ffb55b74baeb3d1175089b1c,
     type: 3}
   firingPoint: {fileID: 3874378718286983692}
-  projectileSpeed: 1
-  projectileDamage: 2
-  contactDamage: 5
+  projectileSpeed: 1.5
+  projectileDamage: 1
+  contactDamage: 2
   shootWaitTime: 0.66
   maxHealth: 3
   healthBar: {fileID: 8055036811008749316}

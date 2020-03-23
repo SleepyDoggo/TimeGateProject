@@ -17,11 +17,14 @@ public class MultiplayerCamera : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(targets.Count);
         cam = GetComponent<Camera>();
         for(int i = targets.Count - 1; i >= 0; i--)
         {
+            
             if(!targets[i].gameObject.active)
             {
+                Debug.Log(targets[i]);
                 targets.Remove(targets[i]);
             }
 
@@ -38,7 +41,11 @@ public class MultiplayerCamera : MonoBehaviour
 
     void LateUpdate()
     {
+        /*foreach(Transform target in targets)
+        {
+            Debug.Log("targets: " + target);
 
+        }*/
 
         if (targets.Count == 1)
         {

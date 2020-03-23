@@ -47,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Accents
+    uniqueID: 363470983
+    locked: 0
   - name: Player
     uniqueID: 2896655763
     locked: 0
@@ -64,6 +67,9 @@ TagManager:
     locked: 0
   - name: Shots
     uniqueID: 3991620725
+    locked: 0
+  - name: Room Cover
+    uniqueID: 3534520901
     locked: 0
   - name: ui
     uniqueID: 4266946359

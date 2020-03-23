@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3614801521521003835}
   - component: {fileID: 9064234282337963015}
   - component: {fileID: 2790931658949816652}
+  - component: {fileID: -6223285664248005163}
   m_Layer: 0
   m_Name: small-pellet
   m_TagString: enemy_projectile
@@ -132,3 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f368d31e80172d44e8bdecb5f2cbab3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6223285664248005163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893549319314309102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa19baf051bafb94e97d9292bbac2cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5

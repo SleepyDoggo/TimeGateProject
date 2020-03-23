@@ -87,7 +87,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
         }
         else
         {
-            Debug.Log("Error");
         }
     }
     //position input not necessary for this object.
@@ -95,7 +94,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     {
         positionToTrack = position;
         //pick random player to start tracking.
-        Debug.Log(PlayerDataCollection.instance.GetNumPlayers());
         int index = Random.Range(0, PlayerDataCollection.instance.GetNumPlayers());
         while (!PlayerDataCollection.instance.GetPlayerData(index).gameObject.activeSelf)
         {
@@ -115,6 +113,8 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     void FixedUpdate()
     {
         //get distance from tracking position(squared to make more efficient)
+        if (positionToTrack == null)
+            return;
         trackingVector = positionToTrack.position - transform.position;
         float distanceFromUserSquared = Mathf.Pow(trackingVector.x, 2) + Mathf.Pow(trackingVector.y, 2);
         isMoving = distanceFromUserSquared > minDistanceFromUser && !isWaiting;
@@ -145,7 +145,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
         {
             if (path == null)
             {
-                Debug.Log("Null path");
                 return;
             }
             if (currentWaypoint >= path.vectorPath.Count)
