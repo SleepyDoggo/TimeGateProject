@@ -14,3 +14,4 @@ public class SwitchWhenJoysticksPresent : MonoBehaviour
         joystick.SetActive(InputController.instance.useJoySticks);
 
     }
+}
