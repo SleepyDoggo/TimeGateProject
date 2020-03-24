@@ -65,6 +65,9 @@ TagManager:
   - name: Enemies
     uniqueID: 647350985
     locked: 0
+  - name: Building Tops
+    uniqueID: 1218716793
+    locked: 0
   - name: Shots
     uniqueID: 3991620725
     locked: 0
