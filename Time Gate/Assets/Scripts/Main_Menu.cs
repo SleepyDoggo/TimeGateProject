@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Main_Menu : MonoBehaviour
 {
-    public GameObject Cog;
-    public GameObject[] menuItems;//TODO - change this to be a menu option
+    public RectTransform Cog;
+    public MenuItem[] menuItems;//TODO - change this to be a menu option
     public float rotationSpeed;
     private bool rotatingUp, rotatingDown;
     private float rotationDuration, rotationTimer;
+    private int index;
     void Start()
     {
         GameState.ResetFlags();
@@ -17,6 +18,8 @@ public class Main_Menu : MonoBehaviour
         rotatingDown = false;
         rotationTimer = 0;
         rotationDuration = 0.5f;
+        index = 1;
+        menuItems[index].ActiveMenu();
     }
 
     void Update()
@@ -28,29 +31,75 @@ public class Main_Menu : MonoBehaviour
         //check for input
         if (InputController.instance.useJoySticks)
         {
+            float value = Input.GetAxis("Player1Vertical");
             //check for up and down from player 1
-
             //check if moving up first
-
-            //if trying to move up, check the current index, dont do anything if the index is zero, otherwise set the flag
-
+            if (value > 0)
+            {
+                //if trying to move up, check the current index, dont do anything if the index is zero, otherwise set the flag
+                if (index != 0)
+                {
+                    menuItems[index].DeActiveMenu();
+                    index--;
+                    menuItems[index].ActiveMenu();
+                    rotatingUp = true;
+                }
+            }
             //check if moving down
+            else if (value < 0)
+            {
+                //if trying to move down, check the current index, dont do anything if the index is the length of the list of menuoptions -1, otherwise set the flag
+                //also change the index of the option selected
+                if (index != menuItems.Length)
+                {
+                    menuItems[index].DeActiveMenu();
+                    index++;
+                    menuItems[index].ActiveMenu();
+                    rotatingDown = true;
+                }                
+            }
+            //check if the user is confirming an action
+            else if (Input.GetButtonDown("Player1AButton"))
+            {
+                menuItems[index].Trigger();
+            }
 
-            //if trying to move down, check the current index, dont do anything if the index is the length of the list of menuoptions -1, otherwise set the flag
-            //also change the index of the option selected
         }
         else
         {
-            //check for up and down from player 1
-
+            //check for up and down from keyboard
             //check if moving up first
-
-            //if trying to move up, check the current index, dont do anything if the index is zero, otherwise set theflag
-
+            if (Input.GetKeyDown("w"))
+            {
+                //if trying to move up, check the current index, dont do anything if the index is zero, otherwise set the flag
+                if (index != 0)
+                {
+                    menuItems[index].DeActiveMenu();
+                    index--;
+                    menuItems[index].ActiveMenu();
+                    rotatingUp = true;
+                }
+            }
             //check if moving down
-
-            //if trying to move down, check the current index, dont do anything if the index is the length of the list of menuoptions -1, otherwise set the flag
+            else if (Input.GetKeyDown("s"))
+            {
+                //if trying to move down, check the current index, dont do anything if the index is the length of the list of menuoptions -1, otherwise set the flag
+                //also change the index of the option selected
+                if (index != menuItems.Length-1)
+                {
+                    menuItems[index].DeActiveMenu();
+                    index++;
+                    menuItems[index].ActiveMenu();
+                    rotatingDown = true;
+                }
+            }
+            //check if the user is confirming an action
+            else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                menuItems[index].Trigger();
+            }
         }
+
     }
 
     void FixedUpdate()
@@ -61,7 +110,6 @@ public class Main_Menu : MonoBehaviour
 
     void Rotation()
     {
-
         //check if rotating up, if so do that
         if (rotatingUp) {
 
@@ -106,11 +154,11 @@ public class Main_Menu : MonoBehaviour
 
     public void RotateCogUp()
     {
-        Cog.transform.Rotate(new Vector3(0,0,Mathf.Deg2Rad * 1f) * rotationSpeed);
+        gameObject.GetComponent<RectTransform>().Rotate(0,0,-1f * rotationSpeed);
     }
     public void RotateCogDown()
     {
-        Cog.transform.Rotate(new Vector3(0, 0, Mathf.Deg2Rad * -1)*rotationSpeed);
+        gameObject.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 1)*rotationSpeed);
     }
     public void SinglePlayerStart()
     {
