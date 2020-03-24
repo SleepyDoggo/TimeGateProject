@@ -15,7 +15,7 @@ public class InputController : MonoBehaviour
 
     public bool inMenu = true;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         joysticks = Input.GetJoystickNames();
         useJoySticks = !(joysticks.Length == 0);
