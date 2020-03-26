@@ -740,7 +740,7 @@ MonoBehaviour:
   stateObjects:
   - {fileID: 5703391218758023661}
   - {fileID: 5867789476403455871}
-  knob: {fileID: 1588168485656355803}
+  knob: {fileID: 7057930309322993889}
   theText: {fileID: 1406715862437026618}
 --- !u!1 &7491252055525797125
 GameObject:

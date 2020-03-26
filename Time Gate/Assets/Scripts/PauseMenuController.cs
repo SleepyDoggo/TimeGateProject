@@ -8,7 +8,7 @@ public class PauseMenuController : MonoBehaviour
     // Start is called before the first frame update
     private MenuState[] states;
     public GameObject[] stateObjects;
-    public GameObject knob;
+    public RectTransform knob;
     public Text theText;
     private int index;
     private bool unPause;//flag needed so object which handles input to start the pausemenu knows when to unpause
@@ -34,6 +34,7 @@ public class PauseMenuController : MonoBehaviour
         unPause = false;
         states[index].GetGameObject().SetActive(true);
         theText.text = states[index].GetName();
+        knob.localRotation.eulerAngles.Set(0,0,0);
     }
 
     public void ExitMenu()
@@ -65,6 +66,7 @@ public class PauseMenuController : MonoBehaviour
                         states[index].Initialize();
                         theText.text = states[index].GetName();
                         //trigger animation on the knob - TODO
+                        RotateKnobLeft();
 
                     }
                 }
@@ -77,6 +79,7 @@ public class PauseMenuController : MonoBehaviour
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
                         theText.text = states[index].GetName();
+                        RotateKnobRight();
                     }
                 }
             }
@@ -135,7 +138,7 @@ public class PauseMenuController : MonoBehaviour
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
                         theText.text = states[index].GetName();
-                        //trigger animation on the knob - TODO
+                        RotateKnobLeft();
 
                     }
                 }
@@ -148,6 +151,7 @@ public class PauseMenuController : MonoBehaviour
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
                         theText.text = states[index].GetName();
+                        RotateKnobRight();
                     }
                 }
             }
@@ -190,6 +194,19 @@ public class PauseMenuController : MonoBehaviour
         }
 
     }
+
+    public void RotateKnobLeft()
+    {
+        knob.Rotate(0, 0, 6);
+    }
+
+    public void RotateKnobRight()
+    {
+        knob.Rotate(0, 0, -6);
+    }
+
+
+
 
     public bool ShouldUnPause()
     {
