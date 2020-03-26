@@ -20,12 +20,13 @@ public class MenuItem : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    public void ActiveMenu()
+    public virtual void ActiveMenu()
     {
+        Debug.Log("Not supposed to be running, but I am");
         transform.localScale = new Vector3(1.25f,1.25f,1);
     }
 
-    public void DeActiveMenu()
+    public virtual void DeActiveMenu()
     {
         transform.localScale = new Vector3(1, 1, 1);
     }

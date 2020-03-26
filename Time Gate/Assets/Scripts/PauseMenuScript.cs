@@ -8,33 +8,34 @@ public class PauseMenuScript : MonoBehaviour
     // check pause
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
+    public PauseMenuController controller;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
+            if (!isPaused)
             {
                 Pause();
             }
+        }else if (controller.ShouldUnPause())
+        {
+            Resume();
         }
     }
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        //pauseMenuUI.SetActive(false);
+        controller.ExitMenu();
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        controller.EnterMenu();
         Time.timeScale = 0f;
         isPaused = true;
     }
