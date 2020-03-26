@@ -18,6 +18,8 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
         //use save data to list current objectives
 
         //re initialize the objectives with whatever data is available, get rid of inactive objectives
+
+        
     }
 
     public string GetName() { return name; }
@@ -26,6 +28,7 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
     {
         if (insideSubMenu)
         {
+            objectives[index].ActiveMenu();
             //get out of sub menu
             index = 0;
             insideSubMenu = false;
@@ -45,13 +48,15 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
         {
             //go inside the sub menu of objectives
             insideSubMenu = true;
-            name = "CONFIRM TO TRACK";
+            name = "TRACK OBJECTIVE";
+            objectives[index].ActiveMenu();
             return true;
         }
         else
         {
             //set new objective to track
-
+            //deactivate menu option
+            objectives[index].DeActiveMenu();
             //no longer inside sub menu, call cancel action to reset insideSubMenu
             CancelAction();
             return false;
