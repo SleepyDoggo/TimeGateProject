@@ -6,33 +6,32 @@ using UnityEngine.UI;
 public class PauseMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public MenuState[] states;
-    public GameObject[] nonStateMenuElements;
+    private MenuState[] states;
+    public GameObject[] stateObjects;
     public GameObject knob;
     public Text theText;
     private int index;
+    private bool unPause;//flag needed so object which handles input to start the pausemenu knows when to unpause
 
     public void ResetMenu()
     {
         index = 0;
-        foreach (MenuState theState in states)
+        states = new MenuState[stateObjects.Length];
+        for(int i =0; i < stateObjects.Length; i++)
         {
+            MenuState theState = stateObjects[i].GetComponent<MenuState>();
+            states[i] = theState;
             //for now, dont worry about setting any states
             theState.Initialize();
-        }
-        foreach (GameObject obj in nonStateMenuElements)
-        {
-            obj.SetActive(false);
+            theState.GetGameObject().SetActive(false);//just in case.
         }
     }
 
     public void EnterMenu()
     {
-        index = 0;
-        foreach (GameObject obj in nonStateMenuElements)
-        {
-            obj.SetActive(true);
-        }
+        gameObject.SetActive(true);
+        ResetMenu();
+        unPause = false;
         states[index].GetGameObject().SetActive(true);
         theText.text = states[index].GetName();
     }
@@ -41,6 +40,7 @@ public class PauseMenuController : MonoBehaviour
     {
         states[index].GetGameObject().SetActive(false);
         ResetMenu();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -104,7 +104,11 @@ public class PauseMenuController : MonoBehaviour
             {
                 if (states[index].CancelAction())
                 {
-                    ExitMenu();
+                    unPause = true;
+                }
+                else
+                {
+                    theText.text = states[index].GetName();
                 }
             }
         }
@@ -140,7 +144,7 @@ public class PauseMenuController : MonoBehaviour
             }
 
             //check for vertical
-            if (Input.GetKeyDown("w"))
+            if (Input.GetKeyDown("s"))
             {
                 states[index].DownAction();
             }
@@ -163,10 +167,19 @@ public class PauseMenuController : MonoBehaviour
             {
                 if (states[index].CancelAction())
                 {
-                    ExitMenu();
+                    unPause = true;
+                }
+                else
+                {
+                    theText.text = states[index].GetName();
                 }
             }
         }
 
+    }
+
+    public bool ShouldUnPause()
+    {
+        return unPause;
     }
 }
