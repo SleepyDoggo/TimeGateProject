@@ -13,20 +13,15 @@ public class PauseMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                //check for the controller being unpaused.
-                if (controller.ShouldUnPause())
-                {
-                    Resume();
-                }
-            }
-            else
+            if (!isPaused)
             {
                 Pause();
             }
+        }else if (controller.ShouldUnPause())
+        {
+            Resume();
         }
     }
 

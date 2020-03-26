@@ -26,9 +26,10 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
 
     public bool CancelAction()
     {
+        name = originalName;
         if (insideSubMenu)
         {
-            objectives[index].ActiveMenu();
+            objectives[index].DeActiveMenu();
             //get out of sub menu
             index = 0;
             insideSubMenu = false;
@@ -38,6 +39,7 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
         else
         {
             //get out of pause menu
+            name = originalName;
             return true;
         }
     }
@@ -54,16 +56,15 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
         }
         else
         {
+            name = originalName;
             //set new objective to track
             //deactivate menu option
-            objectives[index].DeActiveMenu();
             //no longer inside sub menu, call cancel action to reset insideSubMenu
             CancelAction();
             return false;
         }
 
     }
-
 
     public void UpAction()
     {

@@ -63,6 +63,7 @@ public class PauseMenuController : MonoBehaviour
                         index--;
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
+                        theText.text = states[index].GetName();
                         //trigger animation on the knob - TODO
 
                     }
@@ -75,6 +76,7 @@ public class PauseMenuController : MonoBehaviour
                         index++;
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
+                        theText.text = states[index].GetName();
                     }
                 }
             }
@@ -98,6 +100,10 @@ public class PauseMenuController : MonoBehaviour
                 {
                     theText.text = states[index].GetName();
                 }
+                else
+                {
+                    theText.text = states[index].GetName();
+                }
             }
             //check if cancelation button
             else if (Input.GetButtonDown("Player1BButton"))
@@ -105,6 +111,7 @@ public class PauseMenuController : MonoBehaviour
                 if (states[index].CancelAction())
                 {
                     unPause = true;
+                    theText.text = states[index].GetName();
                 }
                 else
                 {
@@ -127,6 +134,7 @@ public class PauseMenuController : MonoBehaviour
                         index--;
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
+                        theText.text = states[index].GetName();
                         //trigger animation on the knob - TODO
 
                     }
@@ -139,6 +147,7 @@ public class PauseMenuController : MonoBehaviour
                         index++;
                         states[index].GetGameObject().SetActive(true);
                         states[index].Initialize();
+                        theText.text = states[index].GetName();
                     }
                 }
             }
@@ -158,6 +167,10 @@ public class PauseMenuController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 if (states[index].ConfirmAction())
+                {
+                    theText.text = states[index].GetName();
+                }
+                else
                 {
                     theText.text = states[index].GetName();
                 }
