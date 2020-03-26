@@ -8,6 +8,7 @@ public class PauseMenuScript : MonoBehaviour
     // check pause
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
+    public PauseMenuController controller;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,11 @@ public class PauseMenuScript : MonoBehaviour
         {
             if (isPaused)
             {
-                Resume();
+                //check for the controller being unpaused.
+                if (controller.ShouldUnPause())
+                {
+                    Resume();
+                }
             }
             else
             {
@@ -27,14 +32,15 @@ public class PauseMenuScript : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        //pauseMenuUI.SetActive(false);
+        controller.ExitMenu();
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        controller.EnterMenu();
         Time.timeScale = 0f;
         isPaused = true;
     }
