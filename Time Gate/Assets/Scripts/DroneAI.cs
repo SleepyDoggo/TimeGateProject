@@ -127,7 +127,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
         }
         if (dead)
         {
-            Debug.Log(animator.GetBool("Dead"));
             return;
         }
         else
@@ -242,7 +241,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     //use ontriggerenter not oncollisionenter if using istrigger
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collided");
         //check tag from collision. Only accept collisions from player_projectile tags
         if (collision.gameObject.CompareTag("player_projectile"))
         {
