@@ -49,9 +49,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
-  smoothTime: 0.11
+  smoothTime: 0.06
   minCamSize: 6
-  maxCamSize: 10
+  maxCamSize: 12
   sizeLimiter: 10
 --- !u!1001 &7993042775889323667
 PrefabInstance:
@@ -69,21 +69,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5.8561153
       objectReference: {fileID: 0}
     - target: {fileID: 226287532371478483, guid: 2191b9ec21dbdaa44893358fde5275c7,
         type: 3}
@@ -149,6 +134,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478484, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5.8561153
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2191b9ec21dbdaa44893358fde5275c7, type: 3}
