@@ -5,19 +5,19 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     
-    EnemyAI[] enemies;
-    int maxEnemies;
-    int count;
-    bool[] checkedEnemies;
+    protected EnemyAI[] enemies;
+    protected int maxEnemies;
+    protected int count;
+    protected bool[] checkedEnemies;
     public GameObject spawnAnim;
-    private ParticleSystem system;
+    protected ParticleSystem system;
     public void Initialize()
     {
         //use coroutine to wait for the animation to finish.
         StartCoroutine(InitializeSpawner());
     }
 
-    IEnumerator InitializeSpawner()
+    public virtual IEnumerator InitializeSpawner()
     {
         enemies = new EnemyAI[100];//hard limit on number of enemies possible
         system = spawnAnim.GetComponent<ParticleSystem>();
