@@ -73,7 +73,12 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
 
     void UpdatePath()
     {
-        if (seeker.IsDone())
+        if(positionToTrack == null)
+        {
+            Debug.Log("Crash");
+            SetTrackingPosition(rb.transform);
+        }
+        else if (seeker.IsDone())
         {
             seeker.StartPath(rb.position, positionToTrack.position, OnPathComplete);
         }
@@ -99,6 +104,7 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
         {
             index = Random.Range(0, PlayerDataCollection.instance.GetNumPlayers());
         }
+
         positionToTrack = PlayerDataCollection.instance.GetPlayerData(index).transform;
     }
     // Update is called once per frame
