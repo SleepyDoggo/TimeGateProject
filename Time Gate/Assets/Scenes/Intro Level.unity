@@ -10829,7 +10829,7 @@ PrefabInstance:
     - target: {fileID: 7912562043657953601, guid: 038e4c8532b58f448bdc1dee1ea87f96,
         type: 3}
       propertyPath: shakeMagnitude
-      value: 0.09
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7993042776167085887, guid: 038e4c8532b58f448bdc1dee1ea87f96,
         type: 3}
@@ -10856,11 +10856,6 @@ PrefabInstance:
       propertyPath: targets.Array.data[3]
       value: 
       objectReference: {fileID: 1083029073}
-    - target: {fileID: 7993042776167085887, guid: 038e4c8532b58f448bdc1dee1ea87f96,
-        type: 3}
-      propertyPath: smoothTime
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038e4c8532b58f448bdc1dee1ea87f96, type: 3}
 --- !u!1001 &919886452
