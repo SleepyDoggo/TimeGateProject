@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
-  smoothTime: 0.06
+  smoothTime: 0.3
   minCamSize: 6
   maxCamSize: 12
   sizeLimiter: 10
@@ -60,16 +60,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7453886995845572315}
     m_Modifications:
-    - target: {fileID: 226287532371478486, guid: 2191b9ec21dbdaa44893358fde5275c7,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 226287532371478486, guid: 2191b9ec21dbdaa44893358fde5275c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 226287532371478483, guid: 2191b9ec21dbdaa44893358fde5275c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -125,6 +115,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478486, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478486, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2827883888505384454, guid: 2191b9ec21dbdaa44893358fde5275c7,
         type: 3}
       propertyPath: smoothSpeed
@@ -149,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 5.8561153
+      objectReference: {fileID: 0}
+    - target: {fileID: 226287532371478482, guid: 2191b9ec21dbdaa44893358fde5275c7,
+        type: 3}
+      propertyPath: shakeTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2191b9ec21dbdaa44893358fde5275c7, type: 3}
