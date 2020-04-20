@@ -23,11 +23,35 @@ public class PlayerDataCollection : MonoBehaviour
             if (data.playerID == playerNum)
             {
                 players.Remove(data);
+                if (data == null)
+                {
+                    Debug.Log("null error");
+                }
                 return true;
             }
 
         }
         return false;
+    }
+
+    public PlayerData GetRandomPlayer()
+    {
+        PlayerData data = null;
+        float maxPercent = 0;
+        while (data == null)
+        {
+            foreach (PlayerData tmp in players)
+            {
+                float percent = Random.Range(0.0f, 1.0f);
+                if (tmp.isActive && maxPercent < percent)
+                {
+                    maxPercent = percent;
+                    data = tmp;
+                }
+            }
+        }
+
+        return data;
     }
 
     public PlayerData GetPlayerData(int playerNum)
@@ -41,6 +65,11 @@ public class PlayerDataCollection : MonoBehaviour
             
         }
         return null;
+    }
+
+    public bool IsPlayerActive(int playerNum)
+    {
+        return ((PlayerData)players[playerNum]).isActive;
     }
 
     public void AddPlayer(PlayerData player, int playerNum)
