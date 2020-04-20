@@ -99,13 +99,7 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     {
         positionToTrack = position;
         //pick random player to start tracking.
-        int index = Random.Range(0, PlayerDataCollection.instance.GetNumPlayers());
-        while (!PlayerDataCollection.instance.GetPlayerData(index).gameObject.activeSelf)
-        {
-            index = Random.Range(0, PlayerDataCollection.instance.GetNumPlayers());
-        }
-
-        positionToTrack = PlayerDataCollection.instance.GetPlayerData(index).transform;
+        positionToTrack = PlayerDataCollection.instance.GetRandomPlayer().transform;
     }
     // Update is called once per frame
     void Update()
