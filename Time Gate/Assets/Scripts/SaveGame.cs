@@ -24,7 +24,7 @@ public class SaveGame : MonoBehaviour
     private void Save()
     {
         int score = PlayerPrefs.GetInt("SCORE");
-        GameData data = new GameData(score);
+        GameData data = new GameData(score, null);
         SaveLoad.SaveFile(data);
     }
 }
