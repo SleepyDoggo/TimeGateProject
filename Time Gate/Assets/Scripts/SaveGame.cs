@@ -15,6 +15,7 @@ public class SaveGame : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    
     private static void Save()
     {
         int score = PlayerPrefs.GetInt("SCORE");
@@ -26,10 +27,13 @@ public class SaveGame : MonoBehaviour
         bool active = PlayerPrefs.GetInt(MAIN_QUEST + " active") != 0;//zero being inactive
         bool complete = PlayerPrefs.GetInt(MAIN_QUEST + " complete") != 0;
 
+        //figure out how many objectives there are currently,
+        //when giving a new objective, this can be incremented
+        int questLen = PlayerPrefs.GetInt(MAIN_QUEST + " length");
 
         List<QuestObjective> mainObjectives = new List<QuestObjective>();
         //gets the objective data
-        for (int i = 0; i < MAIN_QUEST_LEN; i++) {
+        for (int i = 0; i < questLen; i++) {
             //get the name of the objective
             string name = PlayerPrefs.GetString(MAIN_QUEST + " objective " + i + " name");
             //get the type
@@ -66,5 +70,18 @@ public class SaveGame : MonoBehaviour
 
         GameData data = new GameData(score, quests);
         SaveLoad.SaveFile(data);
+    }
+
+    public static void LoadGameTest()
+    {
+        //set quest data
+        PlayerPrefs.SetInt(MAIN_QUEST + QUEST_INDEX, 0);
+        PlayerPrefs.SetInt(MAIN_QUEST + " active", 1);
+        PlayerPrefs.SetInt(MAIN_QUEST + " complete", 0);
+        PlayerPrefs.SetInt(MAIN_QUEST + " length", 1);
+        //set data for the first objective
+        PlayerPrefs.SetString(MAIN_QUEST + " objective 0 name", "Survive the attack.");
+        PlayerPrefs.SetInt(MAIN_QUEST + " objective 0 type", QuestObjective.TRIGGER);
+        PlayerPrefs.SetFloat(MAIN_QUEST + " objective 0 progress", 0f);
     }
 }
