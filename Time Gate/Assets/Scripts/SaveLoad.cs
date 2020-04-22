@@ -6,12 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveLoad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     /**
      * SaveFile - takes in a gamedata object, and serializes it into the save file
      */
