@@ -178,3 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ec8e78d37bdc14c9d635d01a46d6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 5185385775868835332}
+  questIndex: -1
