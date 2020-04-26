@@ -11,6 +11,7 @@ public class SaveLoad : MonoBehaviour
      */
     public static void SaveFile(GameData data)
     {
+        Debug.Log("Running");
         string destination = Application.persistentDataPath + "/save.dat";
         FileStream file;
 
