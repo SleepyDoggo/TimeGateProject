@@ -103,7 +103,9 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
 
     public void LoadState()
     {
-
+        for (int i = 0; i < objectives.Length; i++) {
+            objectives[i].SetText();
+        }
     }
 
     public GameObject GetGameObject()

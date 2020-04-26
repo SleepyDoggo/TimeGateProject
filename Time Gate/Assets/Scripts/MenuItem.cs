@@ -12,6 +12,8 @@ public class MenuItem : MonoBehaviour
         menuEvent = gameObject.GetComponent<MenuEvent>();
     }
 
+    public virtual void SetText() { return; }
+
     // Update is called once per frame
     void Update()
     {
