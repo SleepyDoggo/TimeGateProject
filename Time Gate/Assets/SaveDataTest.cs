@@ -14,5 +14,6 @@ public class SaveDataTest : MonoBehaviour
     void Update()
     {
         Debug.Log(PlayerPrefs.GetString(SaveGame.MAIN_QUEST + " objective 0 name"));
+        Debug.Log(PlayerPrefs.GetInt(SaveGame.MAIN_QUEST + SaveGame.QUEST_INDEX));
     }
 }
