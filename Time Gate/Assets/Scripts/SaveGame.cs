@@ -16,7 +16,7 @@ public class SaveGame : MonoBehaviour
     }
 
     
-    private static void Save()
+    public static void Save()
     {
         int score = PlayerPrefs.GetInt("SCORE");
 
@@ -69,10 +69,33 @@ public class SaveGame : MonoBehaviour
         quests.Add(mainQuest);
 
         GameData data = new GameData(score, quests);
+        //Debug.Log("Running");
         SaveLoad.SaveFile(data);
     }
 
-    public static void LoadGameTest()
+    public static void Load(GameData data)
+    {
+        foreach(Quest quest in data.quests)
+        {
+            PlayerPrefs.SetInt(quest.name + " active", quest.active ? 1 : 0);
+            PlayerPrefs.SetInt(quest.name + " complete", quest.complete ? 1 : 0);
+            PlayerPrefs.SetInt(quest.name + QUEST_INDEX, quest.objectiveIndex);
+            PlayerPrefs.SetInt(MAIN_QUEST + " length", MAIN_QUEST_LEN);
+            for(int i = 0; i < quest.objectives.Count; i++)
+            {
+                PlayerPrefs.SetString(quest.name + " objective " + i + " name",
+                    quest.objectives[i].name);
+                PlayerPrefs.SetInt(quest.name + " objective " + i + " type",
+                    quest.objectives[i].type);
+                PlayerPrefs.SetFloat(quest.name + " objective " + i + " progress",
+                    quest.objectives[i].progress);
+                PlayerPrefs.SetInt(quest.name + " objective " + i + " amount",
+                    quest.objectives[i].amount);
+            }
+        }
+    }
+
+    public static void NewGameTest()
     {
         //set quest data
         PlayerPrefs.SetInt(MAIN_QUEST + QUEST_INDEX, 0);
@@ -83,5 +106,18 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString(MAIN_QUEST + " objective 0 name", "Survive the attack.");
         PlayerPrefs.SetInt(MAIN_QUEST + " objective 0 type", QuestObjective.TRIGGER);
         PlayerPrefs.SetFloat(MAIN_QUEST + " objective 0 progress", 0f);
+    }
+
+    public static void LoadGameTest()
+    {
+        GameData data = SaveLoad.LoadFile();
+        if(data != null)
+        {
+            Load(data);
+        }
+        else
+        {
+            NewGameTest();
+        }
     }
 }
