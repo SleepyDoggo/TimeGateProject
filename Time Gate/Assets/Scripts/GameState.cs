@@ -34,6 +34,7 @@ public class GameState : MonoBehaviour
         PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
         InitializePlayers();
         InitializeUI();
+        TestNewGame();
         ContinueGame();
         if (spawner != null)
         {
@@ -50,6 +51,16 @@ public class GameState : MonoBehaviour
             theUI.initialize();
         }
     }
+    
+    void TestNewGame()
+    {
+        //This will load in some fake main quest data
+        SaveGame.LoadGameTest();
+    }
+
+    //check player prefs to see if game should be loaded. If not, it should 
+    //use the preset data for a save game.
+    //void LoadGame()
 
     void InitializePlayers()
     {
