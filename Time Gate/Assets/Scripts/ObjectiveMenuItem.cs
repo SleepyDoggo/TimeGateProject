@@ -11,7 +11,14 @@ public class ObjectiveMenuItem : MenuItem
     private void Awake()
     {
         Debug.Log(questIndex);
-        if (questIndex < 0 || questIndex > SaveGame.NUM_QUESTS) {
+
+        SetText();
+    }
+
+    public override void SetText()
+    {
+        if (questIndex < 0 || questIndex > SaveGame.NUM_QUESTS)
+        {
             text.text = "";
             return;
         }
@@ -20,7 +27,6 @@ public class ObjectiveMenuItem : MenuItem
         //Get the objective at the current index, and display the text
         text.text = PlayerPrefs.GetString(SaveGame.QUESTS[questIndex] + " objective " + index
             + " name");
-
     }
     //TODO - add functionality to this if necessary.
     public override void ActiveMenu()
