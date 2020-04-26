@@ -8,6 +8,9 @@ public class SaveGame : MonoBehaviour
     public const string QUEST_INDEX = " quest index";
     public const string QUEST_NUMBER = " quest number";
     public const int MAIN_QUEST_LEN = 2;
+    public static readonly List<string> QUESTS = new List<string>(){ MAIN_QUEST };
+    public const int NUM_QUESTS = 1;
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -69,7 +72,6 @@ public class SaveGame : MonoBehaviour
         quests.Add(mainQuest);
 
         GameData data = new GameData(score, quests);
-        //Debug.Log("Running");
         SaveLoad.SaveFile(data);
     }
 
@@ -111,6 +113,7 @@ public class SaveGame : MonoBehaviour
     public static void LoadGameTest()
     {
         GameData data = SaveLoad.LoadFile();
+        Debug.Log("Data: " + data);
         if(data != null)
         {
             Load(data);
@@ -118,6 +121,7 @@ public class SaveGame : MonoBehaviour
         else
         {
             NewGameTest();
+            Debug.Log("New Game");
         }
     }
 }
