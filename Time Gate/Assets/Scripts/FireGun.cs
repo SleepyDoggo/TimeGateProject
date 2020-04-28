@@ -26,6 +26,10 @@ public class FireGun : MonoBehaviour, GunInterface
     public GameObject projectile;
     public float projectileSpeed = 10;
 
+    //free hand
+    public bool isTwoHanded;
+    public GameObject secondHand;
+
     public AudioSource src;
     // Start is called before the first frame update
     void Start()
