@@ -11,6 +11,7 @@ public class PlayerControllerAlpha3 : MonoBehaviour
     public Animator animator;
     private FlipOnMousePosition checkIfFlipped;
     public PlayerData myData;
+    public GameObject secondHand;
 
     [Range(1,4)]
     public int playerNumber = 1;
@@ -20,6 +21,7 @@ public class PlayerControllerAlpha3 : MonoBehaviour
     void Start()
     {
         checkIfFlipped = transform.GetComponent<FlipOnMousePosition>();
+        secondHand.SetActive(!transform.GetComponentInChildren<FireGun>().isTwoHanded);
     }
 
     // Update is called once per frame
