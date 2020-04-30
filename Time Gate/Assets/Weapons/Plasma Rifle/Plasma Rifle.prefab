@@ -52,12 +52,12 @@ MonoBehaviour:
   playerNumber: 1
   fireRate: 1
   damage: 1
-  projectile: {fileID: 3297107864930427003, guid: d36aa9014f986ee4c8332d9b6f008ba8,
+  projectile: {fileID: 6252280774909678616, guid: d07f91daff084ef4889fc91ff3e3a538,
     type: 3}
   projectileSpeed: 15
   isTwoHanded: 1
   secondHand: {fileID: 0}
-  src: {fileID: 0}
+  src: {fileID: 743775675474610243}
 --- !u!82 &743775675474610243
 AudioSource:
   m_ObjectHideFlags: 0
