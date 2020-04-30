@@ -75,7 +75,6 @@ public class DroneAI : MonoBehaviour, EnemyAI, Spawnable
     {
         if(positionToTrack == null)
         {
-            Debug.Log("Crash");
             SetTrackingPosition(rb.transform);
         }
         else if (seeker.IsDone())
