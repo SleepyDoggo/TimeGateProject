@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: c71df510640720043b0706068eead992
+guid: 9be52b9f95366b24592b03cb7a2c5313
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 279583569647544866
-    second: Miniboss2_Movement-Sheet_0
+      213: 2271200234745344147
+    second: Miniboss2_Attack_Startup-Sheet_0
   - first:
-      213: -8343924908287878534
-    second: Miniboss2_Movement-Sheet_1
+      213: 7317989937553819640
+    second: Miniboss2_Attack_Startup-Sheet_1
   - first:
-      213: 5253365688890149423
-    second: Miniboss2_Movement-Sheet_2
+      213: -1376337205245613516
+    second: Miniboss2_Attack_Startup-Sheet_2
   - first:
-      213: -7001178811752432489
-    second: Miniboss2_Movement-Sheet_3
+      213: 7738531090965424202
+    second: Miniboss2_Attack_Startup-Sheet_3
+  - first:
+      213: -1262696122235525317
+    second: Miniboss2_Attack_Startup-Sheet_4
+  - first:
+      213: -5956397216223871219
+    second: Miniboss2_Attack_Startup-Sheet_5
+  - first:
+      213: 7118937597139108683
+    second: Miniboss2_Attack_Startup-Sheet_6
+  - first:
+      213: -968986271928099984
+    second: Miniboss2_Attack_Startup-Sheet_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Miniboss2_Movement-Sheet_0
+      name: Miniboss2_Attack_Startup-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd67d198d643f5f48af414d70742bc08
-      internalID: 279583569647544866
+      spriteID: d2781b8b66da2c240abf8980138090f6
+      internalID: 2271200234745344147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Miniboss2_Movement-Sheet_1
+      name: Miniboss2_Attack_Startup-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33a68b6e56af2a249801300896004d62
-      internalID: -8343924908287878534
+      spriteID: e49980ea0de7c7e43883f8571da4e618
+      internalID: 7317989937553819640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Miniboss2_Movement-Sheet_2
+      name: Miniboss2_Attack_Startup-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86bb46aca7950d04bb2f51d0aaf7c9a4
-      internalID: 5253365688890149423
+      spriteID: cf34a7efbdb0f94418e83153c273da6d
+      internalID: -1376337205245613516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Miniboss2_Movement-Sheet_3
+      name: Miniboss2_Attack_Startup-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,8 +199,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddb7b6b3fc3df5c4e9f505f9913baff7
-      internalID: -7001178811752432489
+      spriteID: a7dbb8262f96d574d8b8745f948ed738
+      internalID: 7738531090965424202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miniboss2_Attack_Startup-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99f27529c13123a4ea8d28352ffd50c8
+      internalID: -1262696122235525317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miniboss2_Attack_Startup-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffac8120c63c6d94393146d2f76222fc
+      internalID: -5956397216223871219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miniboss2_Attack_Startup-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065c6a82728885e4abf0d4d38bedae48
+      internalID: 7118937597139108683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Miniboss2_Attack_Startup-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3837ba064bb52b42ac856c588750e24
+      internalID: -968986271928099984
       vertices: []
       indices: 
       edges: []
