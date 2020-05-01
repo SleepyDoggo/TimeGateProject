@@ -57,6 +57,12 @@ public class PlayerData : MonoBehaviour
             Destroy(collision.gameObject);
             
         }
+        else if (collision.gameObject.CompareTag("Health_Pickup"))
+        {
+            //for collision with health pack 
+            Heal();
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -80,6 +86,12 @@ public class PlayerData : MonoBehaviour
         {
             Die();
         }
+    }
+
+    void Heal()
+    {
+        //For now, set player health back to full 
+        playerHealth = 100;
     }
 
     public IEnumerator Knockback(Vector3 direction)
