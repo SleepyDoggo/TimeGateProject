@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5792889199956690717}
   - component: {fileID: 3850960177901113708}
   - component: {fileID: 8885809874444051463}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BBGBullet
   m_TagString: player_projectile
   m_Icon: {fileID: 0}
