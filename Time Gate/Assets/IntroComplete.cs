@@ -21,7 +21,7 @@ public class IntroComplete : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerPrefs.SetInt(SaveGame.MAIN_QUEST + " complete", 1);
-            PlayerPrefs.SetFloat(SaveGame.MAIN_QUEST + " objective 0 progress", 0f);
+            PlayerPrefs.SetFloat(SaveGame.MAIN_QUEST + " objective 0 progress", 1f);
             PlayerPrefs.SetInt(SaveGame.MAIN_QUEST + SaveGame.QUEST_INDEX,
                 PlayerPrefs.GetInt(SaveGame.MAIN_QUEST + SaveGame.QUEST_INDEX)+1);
             SaveGame.Save();

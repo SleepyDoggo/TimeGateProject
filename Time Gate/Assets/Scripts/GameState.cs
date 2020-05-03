@@ -34,7 +34,6 @@ public class GameState : MonoBehaviour
         PlayerPrefs.SetInt(FLAG_GAME_OVER, FLAG_VALUE_FALSE);
         InitializePlayers();
         InitializeUI();
-        TestNewGame();
         ContinueGame();
         if (spawner != null)
         {
@@ -55,7 +54,7 @@ public class GameState : MonoBehaviour
     void TestNewGame()
     {
         //This will load in some fake main quest data
-        SaveGame.LoadGameTest();
+        SaveGame.LoadGame();
     }
 
     //check player prefs to see if game should be loaded. If not, it should 
