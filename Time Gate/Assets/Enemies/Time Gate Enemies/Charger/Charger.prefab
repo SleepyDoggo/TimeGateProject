@@ -123,7 +123,7 @@ MonoBehaviour:
   chargeWaitTime: 0.66
   maxHealth: 6
   healthBar: {fileID: 6845624695524650613}
-  maxScore: 350
+  maxScore: 300
   nextWaypointDistance: 3
   animator: {fileID: 249122229369525206}
   chargeSound: {fileID: 9171126451981970396}
