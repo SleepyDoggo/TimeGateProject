@@ -9,16 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1437011437767496764}
-  - component: {fileID: 777135183042877481}
   - component: {fileID: 3370314874498128110}
   - component: {fileID: 4832192572094323814}
   - component: {fileID: 6142395230429678173}
+  - component: {fileID: 4234341207510402077}
   - component: {fileID: 9171126451981970396}
   - component: {fileID: 7330104677252844808}
   - component: {fileID: 2317917063394651040}
   m_Layer: 0
   m_Name: Charger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,56 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &777135183042877481
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062649027034910330}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1822580716098369133, guid: b799e8aff0dd4814182487caa11372d5,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.5, y: 2.5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!58 &3370314874498128110
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +104,31 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &4234341207510402077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062649027034910330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677024a26a9be024ab1b26a62ee05cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistanceFromUser: 4
+  movementSpeed: 2
+  contactDamage: 2
+  chargingFrequency: 3
+  chargeWaitTime: 0.66
+  maxHealth: 6
+  healthBar: {fileID: 6845624695524650613}
+  maxScore: 350
+  nextWaypointDistance: 3
+  animator: {fileID: 249122229369525206}
+  chargeSound: {fileID: 9171126451981970396}
+  startSound: {fileID: 7330104677252844808}
+  deathSound: {fileID: 2317917063394651040}
 --- !u!82 &9171126451981970396
 AudioSource:
   m_ObjectHideFlags: 0
@@ -455,7 +430,7 @@ GameObject:
   - component: {fileID: 249122229369525206}
   m_Layer: 0
   m_Name: Sprite Stuff
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,8 +484,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 647350985
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -1822580716098369133, guid: b799e8aff0dd4814182487caa11372d5,
     type: 3}
@@ -622,6 +597,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285477330ea70ab4281a367221a84675, type: 3}
+--- !u!1 &6845624695524650613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6489040170297390961, guid: 285477330ea70ab4281a367221a84675,
+    type: 3}
+  m_PrefabInstance: {fileID: 364009557635340548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2487918735676684166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2849622062840917634, guid: 285477330ea70ab4281a367221a84675,
