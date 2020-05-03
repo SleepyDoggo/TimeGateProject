@@ -119,7 +119,7 @@ MonoBehaviour:
   minDistanceFromUser: 4
   movementSpeed: 2
   contactDamage: 2
-  chargingFrequency: 3
+  chargingFrequency: 10
   chargeWaitTime: 0.66
   maxHealth: 6
   healthBar: {fileID: 6845624695524650613}

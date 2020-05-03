@@ -40,6 +40,8 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     bool flipped;
     public Animator animator;
     bool charging;
+    bool starting;
+    bool moving;
     bool dead;
 
     //variables associated with audio playing
@@ -50,12 +52,14 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     {
         //Initialize flags, timers, and health
         isMoving = true;
+        moving = true;
         isWaiting = false;
         charge = false;
         chargeTimer = 0;
         waitingTimer = 0;
         health = maxHealth;
         flipped = false;
+        starting = false;
         charging = false;
         dead = false;
 
@@ -186,21 +190,38 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
             charge = false;
             charging = false;
             isMoving = true;
+            starting = false;
+            moving = true;
+            Moving();
         }
         else if (waitingTimer > chargeWaitTime / 2.0f && !charge)
         {
-            //shoot
-            charge = true;
-            charging = true;
+            //begin startup
+            moving = false;
+            Startup();
             Charge();
+
         }
+    }
+
+    void Moving()
+    {
+        animator.SetBool("Moving", moving);
+    }
+
+    void Startup()
+    {
+        starting = true;
+        movementSpeed = 0;
+        animator.SetBool("Starting", starting);
+        
     }
 
     void Charge()
     {
+        charge = true;
+        charging = true;
         animator.SetBool("Charging", charging);
-        movementSpeed = 5;
-        contactDamage = 10;
 
     }
 
