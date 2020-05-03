@@ -97,7 +97,7 @@ public class SaveGame : MonoBehaviour
         }
     }
 
-    public static void NewGameTest()
+    public static void NewGame()
     {
         //set quest data
         PlayerPrefs.SetInt(MAIN_QUEST + QUEST_INDEX, 0);
@@ -110,17 +110,16 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetFloat(MAIN_QUEST + " objective 0 progress", 0f);
     }
 
-    public static void LoadGameTest()
+    public static void LoadGame()
     {
         GameData data = SaveLoad.LoadFile();
-        Debug.Log("Data: " + data);
         if(data != null)
         {
             Load(data);
         }
         else
         {
-            NewGameTest();
+            NewGame();
             Debug.Log("New Game");
         }
     }
