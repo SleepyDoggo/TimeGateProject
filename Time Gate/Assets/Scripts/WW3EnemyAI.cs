@@ -5,32 +5,35 @@ using Pathfinding;
 
 public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
 {
-    //fields required for movement
-    public float minDistanceFromUser = 8;
-    public float movementSpeed = 100;
-    private bool isMoving, isWaiting, shot;
 
-    //Variables related to firing a weapon
-    private float shootingTimer, waitingTimer;
-    public float shootingFrequency = 3.0f;
+    //fields for movement 
+    public float minDistanceFromUser = 4;
+    public float movementSpeed = 100;
+    private bool isMoving, isStarting, isCharging;
+
+    //Variables related to charging attack
+    private float attackTimer, startTimer, idleTimer, retractTimer;
+    public int contactDamage = 5;
+    public float attackingFrequency = 3.0f;
+    public float attackWaitTime = 0.66f;
+    public float delay = 0.5f;
+    public float attackLength = 0.05f;
+
     public GameObject projectile;
     public GameObject firingPoint;
-    public float projectileSpeed = 10;
-    public int projectileDamage = 2;
-    public int contactDamage = 5;
-    [Range(0, 2)]
-    public float shootWaitTime = 0.66f;
+    public float projectileSpeed = 2;
+    public int projectileDamage = 1;
 
-    //fields required for health and dying.
+    //Fields required for health and dying 
     private int health;
     [Range(1, 100)]
-    public int maxHealth = 3;
+    public int maxHealth = 30;
     public GameObject healthBar;
 
-    //this value is how much they are worth per shot, this way score isnt done on a per enemy basis.
+    //Score per shot
     public int maxScore;
 
-    //variables related to pathfinding
+    //Variables for pathfinding 
     private Rigidbody2D rb;
     private Vector2 trackingVector;
     private Transform positionToTrack;
@@ -43,34 +46,37 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     //variables related to animating
     bool flipped;
     public Animator animator;
+    bool attacking;
+    bool starting;
+    bool retract;
     bool idle;
-    bool shooting;
     bool dead;
 
     //variables associated with audio playing
     public AudioSource shootSound, deathSound;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        //initialize flags, timers, and health
+        //Initialize flags, timers, and health
         isMoving = true;
-        isWaiting = false;
-        shot = false;
-        shootingTimer = 0;
-        waitingTimer = 0;
+        idle = true;
+        isStarting = false;
+        isCharging = false;
+        starting = false;
+        attacking = false;
+        attackTimer = 0;
+        startTimer = 0;
+        retractTimer = 0;
         health = maxHealth;
         flipped = false;
         dead = false;
-        //initialize all variables related to pathfinding.
+
+        //initialize all pathfinding variables
         rb = GetComponent<Rigidbody2D>();
         SetTrackingPosition(rb.transform);
         seeker = GetComponent<Seeker>();
         InvokeRepeating("UpdatePath", 0f, 0.25f);
-
-
     }
 
     void UpdatePath()
@@ -104,15 +110,68 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         //pick random player to start tracking.
         positionToTrack = PlayerDataCollection.instance.GetRandomPlayer().transform;
     }
+
     // Update is called once per frame
     void Update()
     {
-        if (isWaiting)
-            waitingTimer += Time.deltaTime;
-        else
-            shootingTimer += Time.deltaTime;
-    }
+        if (idle)
+        {
+            idleTimer += Time.deltaTime;
+            if (idleTimer >= attackingFrequency)
+            {
+                idle = false;
+                starting = true;
+                idleTimer = 0;
+                animator.SetBool("Idle", idle);
+                animator.SetBool("Starting", starting);
+            }
+        }
+        else if (starting)
+        {
+            startTimer += Time.deltaTime;
+            if (startTimer > delay)
+            {
+                Debug.Log("starting");
+                starting = false;
+                attacking = true;
+                startTimer = 0;
+                shootSound.Play();
+                animator.SetBool("Starting", starting);
+                animator.SetBool("Attacking", attacking);
+            }
 
+        }
+        else if (attacking)
+        {
+
+            attackTimer += Time.deltaTime;
+            if (attackTimer > attackLength)
+            {
+                Debug.Log("attacking");
+                attacking = false;
+                retract = true;
+                attackTimer = 0;
+                animator.SetBool("Attacking", attacking);
+                animator.SetBool("Retract", retract);
+            }
+        }
+        else if (retract)
+        {
+            retractTimer += Time.deltaTime;
+            if (retractTimer > delay)
+            {
+                Debug.Log("retract");
+                retract = false;
+                idle = true;
+                retractTimer = 0;
+                animator.SetBool("Retract", retract);
+                animator.SetBool("Idle", idle);
+            }
+        }
+
+
+
+    }
     void FixedUpdate()
     {
         //get distance from tracking position(squared to make more efficient)
@@ -120,23 +179,31 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
             return;
         trackingVector = positionToTrack.position - transform.position;
         float distanceFromUserSquared = Mathf.Pow(trackingVector.x, 2) + Mathf.Pow(trackingVector.y, 2);
-        isMoving = distanceFromUserSquared > minDistanceFromUser && !isWaiting;
-        if (shootingTimer >= shootingFrequency)
-        {
-
-            isMoving = false;
-            shootingTimer = 0;
-            isWaiting = true;
-        }
+        isMoving = distanceFromUserSquared > minDistanceFromUser && !starting;
         if (dead)
         {
             return;
         }
-        else
+        if (idle)
         {
             MoveEnemy();
-            WaitToShoot();
         }
+        else if (starting)
+        {
+            Startup();
+            MoveEnemy();
+        }
+        else if (attacking)
+        {
+            Shoot();
+            MoveEnemy();
+        }
+        else if(retract)
+        {
+            Retract();
+            MoveEnemy();
+        }
+
 
     }
 
@@ -183,22 +250,17 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         }
     }
 
-    void WaitToShoot()
+    void Startup()
     {
-        if (waitingTimer > shootWaitTime)
-        {
-            //stop waiting
-            isWaiting = false;
-            waitingTimer = 0;
-            shot = false;
-            isMoving = true;
-        }
-        else if (waitingTimer > shootWaitTime / 2.0f && !shot)
-        {
-            //shoot
-            shot = true;
-            Shoot();
-        }
+        rb.velocity = Vector2.zero;
+        movementSpeed = 0;
+    }
+
+
+    void Retract()
+    {
+        rb.velocity = Vector2.zero;
+        movementSpeed = 0;
     }
 
     void Shoot()
@@ -209,6 +271,7 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         obj.transform.parent = null;
         obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
         obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+
 
     }
 
@@ -230,6 +293,7 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         }
 
     }
+
     void Die()
     {
         //destroy the enemy
@@ -240,7 +304,7 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         healthBar.SetActive(false);
 
         //turn on explosion animation, and die when its done, after a time.
-        Destroy(this.gameObject, 0.6f);
+        Destroy(this.gameObject, 1.0f);
     }
 
     //use ontriggerenter not oncollisionenter if using istrigger
@@ -259,6 +323,7 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     {
         return contactDamage;
     }
+
     //Turns to face the direction it is going
     void flipOnDirection(Vector2 direction)
     {
