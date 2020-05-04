@@ -72,6 +72,9 @@ TagManager:
   - name: Room Cover
     uniqueID: 3534520901
     locked: 0
+  - name: Top Layer
+    uniqueID: 230060057
+    locked: 0
   - name: ui
     uniqueID: 4266946359
     locked: 0
