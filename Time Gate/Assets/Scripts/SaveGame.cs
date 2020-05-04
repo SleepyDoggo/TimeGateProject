@@ -71,7 +71,10 @@ public class SaveGame : MonoBehaviour
         List<Quest> quests = new List<Quest>();
         quests.Add(mainQuest);
 
-        GameData data = new GameData(score, quests);
+        //get the data for the corruption
+        float gameCorruption = PlayerPrefs.GetFloat("gamecorruption");
+
+        GameData data = new GameData(score,gameCorruption, quests);
         SaveLoad.SaveFile(data);
     }
 
@@ -108,6 +111,9 @@ public class SaveGame : MonoBehaviour
         PlayerPrefs.SetString(MAIN_QUEST + " objective 0 name", "Survive the attack.");
         PlayerPrefs.SetInt(MAIN_QUEST + " objective 0 type", QuestObjective.TRIGGER);
         PlayerPrefs.SetFloat(MAIN_QUEST + " objective 0 progress", 0f);
+
+        //set data for the corruption
+        PlayerPrefs.SetFloat("gamecorruption",0.5f);
     }
 
     public static void LoadGame()

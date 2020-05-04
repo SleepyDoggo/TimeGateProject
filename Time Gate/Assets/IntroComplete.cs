@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class IntroComplete : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +13,7 @@ public class IntroComplete : MonoBehaviour
             PlayerPrefs.SetFloat(SaveGame.MAIN_QUEST + " objective 0 progress", 1f);
             PlayerPrefs.SetInt(SaveGame.MAIN_QUEST + SaveGame.QUEST_INDEX,
                 PlayerPrefs.GetInt(SaveGame.MAIN_QUEST + SaveGame.QUEST_INDEX)+1);
+            PlayerPrefs.SetFloat("gamecorruption",0.2f);
             SaveGame.Save();
         }
     }
