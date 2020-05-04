@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
+public class MiniBoss2AI : MonoBehaviour, EnemyAI, Spawnable
 {
 
     //fields for movement 
@@ -12,23 +12,22 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
     private bool isMoving, isStarting, isCharging;
 
     //Variables related to charging attack
-    private float chargeTimer, startTimer, moveTimer;
+    private float attackTimer, startTimer, moveTimer, retractTimer;
     public int contactDamage = 5;
-    public float chargingFrequency = 3.0f;
-    public float chargeWaitTime = 0.66f;
-    public float delay = 0.1f;
-    public float chargeLength = 2.0f;
+    public float attackingFrequency = 3.0f;
+    public float attackWaitTime = 0.66f;
+    public float delay = 1.5f;
+    public float attackLength = 0.5f;
 
     public GameObject projectile;
-    public GameObject firingPoint1;
-    public GameObject firingPoint2;
-    public float projectileSpeed = 2;
+    public GameObject firingPoint;
+    public float projectileSpeed = 1;
     public int projectileDamage = 1;
 
     //Fields required for health and dying 
     private int health;
     [Range(1, 100)]
-    public int maxHealth = 30;
+    public int maxHealth = 6;
     public GameObject healthBar;
 
     //Score per shot
@@ -47,8 +46,9 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
     //variables related to animating
     bool flipped;
     public Animator animator;
-    bool charging;
+    bool attacking;
     bool starting;
+    bool retract;
     bool moving;
     bool dead;
 
@@ -64,8 +64,10 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
         isStarting = false;
         isCharging = false;
         starting = false;
-        charging = false;
-        chargeTimer = 0;
+        attacking = false;
+        retract = false;
+        retractTimer = 0;
+        attackTimer = 0;
         startTimer = 0;
         health = maxHealth;
         flipped = false;
@@ -116,13 +118,13 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
         if (moving)
         {
             moveTimer += Time.deltaTime;
-            if (moveTimer >= chargingFrequency)
+            if (moveTimer >= attackingFrequency)
             {
                 moving = false;
                 starting = true;
                 moveTimer = 0;
                 animator.SetBool("Moving", moving);
-                shootSound.Play();
+                animator.SetBool("Starting", starting);
             }
         }
         else if (starting)
@@ -130,29 +132,44 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
             startTimer += Time.deltaTime;
             if (startTimer > delay)
             {
+                Debug.Log("starting");
                 starting = false;
-                charging = true;
+                attacking = true;
                 startTimer = 0;
-                animator.SetBool("Charging", charging);
+                shootSound.Play();
+                animator.SetBool("Starting", starting);
+                animator.SetBool("Attacking", attacking);
             }
 
         }
-        else if (charging)
+        else if (attacking)
         {
 
-            chargeTimer += Time.deltaTime;
-            if (chargeTimer > chargeLength)
+            attackTimer += Time.deltaTime;
+            if (attackTimer > attackLength)
             {
-                charging = false;
+                Debug.Log("attacking");
+                attacking = false;
+                retract = true;
+                attackTimer = 0;
+                animator.SetBool("Attacking", attacking);
+                animator.SetBool("Retract", retract);
+            }
+        }
+        else if(retract)
+        {
+            retractTimer += Time.deltaTime;
+            if (retractTimer > delay)
+            {
+                Debug.Log("retract");
+                retract = false;
                 moving = true;
                 Moving();
-                chargeTimer = 0;
-                animator.SetBool("Charging", charging);
+                retractTimer = 0;
+                animator.SetBool("Retract", retract);
                 animator.SetBool("Moving", moving);
             }
         }
-
-
 
     }
     void FixedUpdate()
@@ -175,9 +192,13 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
         {
             Startup();
         }
-        else if (charging)
+        else if (attacking)
         {
-            Charge();
+            Shoot();
+        }
+        else if(retract)
+        {
+            Retract();
         }
 
 
@@ -229,40 +250,29 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
 
     void Moving()
     {
-        movementSpeed = 2;
+        movementSpeed = 4;
         contactDamage = 5;
-        minDistanceFromUser = 4;
+        minDistanceFromUser = 5;
     }
 
     void Startup()
     {
         rb.velocity = Vector2.zero;
         movementSpeed = 0;
-        Shoot();
     }
 
-    void Charge()
+    void Retract()
     {
-        movementSpeed = 7;
-        contactDamage = 10;
-        minDistanceFromUser = 0;
-        MoveEnemy();
+        rb.velocity = Vector2.zero;
+        movementSpeed = 0;
     }
 
     void Shoot()
     {
-        //shoot a projectile in the direction of the enemy
-        //TODO
-        GameObject obj1 = Instantiate(projectile, firingPoint1.transform.position, Quaternion.identity);
-        GameObject obj2 = Instantiate(projectile, firingPoint2.transform.position, Quaternion.identity);
-        obj1.transform.parent = null;
-        obj1.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
-        obj1.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
-        obj2.transform.parent = null;
-        obj2.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
-        obj2.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
-        
-
+        GameObject obj = Instantiate(projectile, firingPoint.transform.position, Quaternion.identity);
+        obj.transform.parent = null;
+        obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
+        obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
     }
 
     public void TakeDamage(int damage, PlayerData data)

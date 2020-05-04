@@ -285,14 +285,14 @@ MonoBehaviour:
   contactDamage: 5
   chargingFrequency: 3
   chargeWaitTime: 0.66
-  delay: 1.5
+  delay: 0.1
   chargeLength: 2
   projectile: {fileID: 7870031141126340219, guid: ae06b518d4d0d7f48a212e5b1a1ce69c,
     type: 3}
   firingPoint1: {fileID: 5356961091445828544}
   firingPoint2: {fileID: 5603726839562425927}
   projectileSpeed: 5
-  projectileDamage: 6
+  projectileDamage: 1
   maxHealth: 30
   healthBar: {fileID: 100015987033704715}
   maxScore: 500

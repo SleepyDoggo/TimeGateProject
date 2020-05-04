@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 8814939710003277004}
   - component: {fileID: 4312002453762026082}
   - component: {fileID: 1534498360848278870}
+  - component: {fileID: 6169006590893574545}
   - component: {fileID: 1043476647151027155}
   - component: {fileID: 8059625283195796838}
   - component: {fileID: 6046596374375308593}
@@ -165,6 +166,37 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &6169006590893574545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106747322097522206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ff76d69f1bf964d853c8721a15510d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistanceFromUser: 5
+  movementSpeed: 4
+  contactDamage: 5
+  attackingFrequency: 3
+  attackWaitTime: 0.66
+  delay: 1.5
+  attackLength: 0.5
+  projectile: {fileID: 7870031141126340219, guid: ae06b518d4d0d7f48a212e5b1a1ce69c,
+    type: 3}
+  firingPoint: {fileID: 2693673372480397370}
+  projectileSpeed: 1
+  projectileDamage: 1
+  maxHealth: 30
+  healthBar: {fileID: 2403395960716755161}
+  maxScore: 500
+  nextWaypointDistance: 3
+  animator: {fileID: 7076751251559209764}
+  shootSound: {fileID: 8059625283195796838}
+  deathSound: {fileID: 6046596374375308593}
 --- !u!82 &1043476647151027155
 AudioSource:
   m_ObjectHideFlags: 0
@@ -632,6 +664,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285477330ea70ab4281a367221a84675, type: 3}
+--- !u!1 &2403395960716755161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6489040170297390961, guid: 285477330ea70ab4281a367221a84675,
+    type: 3}
+  m_PrefabInstance: {fileID: 8887607865916880808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6691439101504051498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2849622062840917634, guid: 285477330ea70ab4281a367221a84675,
