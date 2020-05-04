@@ -7,17 +7,13 @@ public class CorruptedSpawner : Spawner
     public List<GameObject> enemyPool;
     public GameObject preferred;
 
-    public float gameCorruption = 0;
-    public float levelCorruption = 0;
-
-    //in start method, load the game and level corruption from the playerprefs
-    void Start()
-    {
-
-    }
+    private float gameCorruption = 0;
+    private float levelCorruption = 0;
 
 
     public override IEnumerator InitializeSpawner() {
+        gameCorruption = PlayerPrefs.GetFloat("gamecorruption");
+        levelCorruption = PlayerPrefs.GetFloat("levelcorruption");
         enemies = new EnemyAI[100];
         system = spawnAnim.GetComponent<ParticleSystem>();
 

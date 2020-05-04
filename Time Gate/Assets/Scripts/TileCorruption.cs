@@ -7,11 +7,11 @@ public class TileCorruption : MonoBehaviour
 {
     private Tilemap map;
     [Range(0,1)]
-    public float gameCorruption = 0;//for testing
-    public float levelCorruption = 0;
+    private float gameCorruption = 0;//for testing
+    private float levelCorruption = 0;
     private float timer;
     [Range(0,1000)]
-    public float corruptionUpdateTime = 60;
+    public float corruptionUpdateTime = 45;
 
     public Vector2Int xRange, yRange;
 
@@ -21,10 +21,13 @@ public class TileCorruption : MonoBehaviour
     {
         map = gameObject.GetComponent<Tilemap>();
         //initialize the game corruption and the level corruption
+        gameCorruption = PlayerPrefs.GetFloat("gamecorruption");
+        levelCorruption = gameCorruption;
 
         //call the corruption function more often depending on the duration of the 
-        InvokeRepeating("Corrupt", 5, 3/(gameCorruption+levelCorruption));
+        InvokeRepeating("Corrupt", 5, 0.5f / (gameCorruption+levelCorruption));
         timer = corruptionUpdateTime;
+        PlayerPrefs.SetFloat("levelcorruption", levelCorruption);
     }
 
     // Update is called once per frame
@@ -35,9 +38,11 @@ public class TileCorruption : MonoBehaviour
             timer = corruptionUpdateTime;
             CancelInvoke();
             //get the updated levelcorruptiondata
+            levelCorruption += levelCorruption * 0.5f;
 
             //repeat the invoke with the updated levelcorruption data
-            InvokeRepeating("Corrupt", 1, 3 / (gameCorruption + levelCorruption));
+            InvokeRepeating("Corrupt", 1, .5f /(gameCorruption + levelCorruption));
+            PlayerPrefs.SetFloat("levelcorruption", levelCorruption);
         }
         
     }
