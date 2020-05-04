@@ -9,13 +9,15 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     //fields for movement 
     public float minDistanceFromUser = 4;
     public float movementSpeed = 100;
-    private bool isMoving, isWaiting, charge;
+    private bool isMoving, isStarting, isCharging;
 
     //Variables related to charging attack
-    private float chargeTimer, waitingTimer;
+    private float chargeTimer, startTimer, moveTimer;
     public int contactDamage = 5;
     public float chargingFrequency = 3.0f;
     public float chargeWaitTime = 0.66f;
+    public float delay = 1.5f;
+    public float chargeLength = 2.0f;
 
     //Fields required for health and dying 
     private int health;
@@ -53,14 +55,14 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
         //Initialize flags, timers, and health
         isMoving = true;
         moving = true;
-        isWaiting = false;
-        charge = false;
-        chargeTimer = 0;
-        waitingTimer = 0;
-        health = maxHealth;
-        flipped = false;
+        isStarting = false;
+        isCharging = false;
         starting = false;
         charging = false;
+        chargeTimer = 0;
+        startTimer = 0;
+        health = maxHealth;
+        flipped = false;
         dead = false;
 
         //initialize all pathfinding variables
@@ -105,10 +107,47 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     // Update is called once per frame
     void Update()
     {
-        if (isWaiting)
-            waitingTimer += Time.deltaTime;
-        else
+        if (moving) { 
+            moveTimer += Time.deltaTime;
+            if (moveTimer >= chargingFrequency)
+            {
+                moving = false;
+                starting = true;
+                moveTimer = 0;
+                animator.SetBool("Moving", moving);
+                animator.SetBool("Starting", starting);
+            }
+        }
+        else if (starting)
+        {
+            startTimer += Time.deltaTime;
+            if (startTimer > delay)
+            {
+                starting = false;
+                charging = true;
+                startTimer = 0;
+                animator.SetBool("Starting", starting);
+                animator.SetBool("Charging", charging);
+            }
+
+        }
+        else if (charging)
+        {
+
             chargeTimer += Time.deltaTime;
+            if(chargeTimer > chargeLength)
+            {
+                charging = false;
+                moving = true;
+                Moving();
+                chargeTimer = 0;
+                animator.SetBool("Charging", charging);
+                animator.SetBool("Moving", moving);
+            }
+        }
+        
+
+            
     }
     void FixedUpdate()
     {
@@ -117,23 +156,24 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
             return;
         trackingVector = positionToTrack.position - transform.position;
         float distanceFromUserSquared = Mathf.Pow(trackingVector.x, 2) + Mathf.Pow(trackingVector.y, 2);
-        isMoving = distanceFromUserSquared > minDistanceFromUser && !isWaiting;
-        if (chargeTimer >= chargingFrequency)
-        {
-
-            isMoving = false;
-            chargeTimer = 0;
-            isWaiting = true;
-        }
+        isMoving = distanceFromUserSquared > minDistanceFromUser && !starting;
         if (dead)
         {
             return;
         }
-        else
+        if (moving)
         {
-            MoveEnemy();
-            WaitToCharge();
+            MoveEnemy();        
         }
+        else if(starting)
+        {
+            Startup();
+        }
+        else if(charging)
+        {
+            Charge();
+        }
+        
 
     }
 
@@ -180,49 +220,32 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
         }
     }
 
-    void WaitToCharge()
-    {
-        if (waitingTimer > chargeWaitTime)
-        {
-            //stop waiting
-            isWaiting = false;
-            waitingTimer = 0;
-            charge = false;
-            charging = false;
-            isMoving = true;
-            starting = false;
-            moving = true;
-            Moving();
-        }
-        else if (waitingTimer > chargeWaitTime / 2.0f && !charge)
-        {
-            //begin startup
-            moving = false;
-            Startup();
-            Charge();
-
-        }
-    }
 
     void Moving()
     {
-        animator.SetBool("Moving", moving);
+        Debug.Log("Moving");
+        movementSpeed = 2;
+        contactDamage = 5;
+        minDistanceFromUser = 4;
     }
 
     void Startup()
     {
-        starting = true;
+        Debug.Log("Startup");
+        startSound.Play();
+        rb.velocity = Vector2.zero;
         movementSpeed = 0;
-        animator.SetBool("Starting", starting);
+        
         
     }
 
     void Charge()
     {
-        charge = true;
-        charging = true;
-        animator.SetBool("Charging", charging);
-
+        Debug.Log("Charge");
+        movementSpeed = 8;
+        contactDamage = 10;
+        minDistanceFromUser = 0;
+        MoveEnemy();
     }
 
     public void TakeDamage(int damage, PlayerData data)
