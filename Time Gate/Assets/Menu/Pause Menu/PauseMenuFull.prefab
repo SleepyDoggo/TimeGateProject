@@ -1636,6 +1636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuOption
       objectReference: {fileID: 0}
+    - target: {fileID: 6551668852589692018, guid: 9e1deec0b1fc52b44a96df2bc195c0fd,
+        type: 3}
+      propertyPath: questIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e1deec0b1fc52b44a96df2bc195c0fd, type: 3}
 --- !u!224 &4704993353936078616 stripped

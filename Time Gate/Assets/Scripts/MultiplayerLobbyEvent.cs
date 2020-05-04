@@ -11,6 +11,8 @@ public class MultiplayerLobbyEvent : MonoBehaviour, MenuEvent
     }
     public void MultiPlayerStart()
     {
-        SceneManager.LoadScene(1);
+        SaveGame.LoadGame();
+        //SceneManager.LoadScene(1);
+        Main_Menu.LoadSceneFromSave();
     }
 }

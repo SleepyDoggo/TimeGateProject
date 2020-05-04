@@ -50,6 +50,16 @@ public class GameState : MonoBehaviour
             theUI.initialize();
         }
     }
+    
+    void TestNewGame()
+    {
+        //This will load in some fake main quest data
+        SaveGame.LoadGame();
+    }
+
+    //check player prefs to see if game should be loaded. If not, it should 
+    //use the preset data for a save game.
+    //void LoadGame()
 
     void InitializePlayers()
     {

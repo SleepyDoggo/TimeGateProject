@@ -146,9 +146,6 @@ public class Main_Menu : MonoBehaviour
 
             RotateCogDown();
         }
-
-        
-
         
     }
 
@@ -160,24 +157,25 @@ public class Main_Menu : MonoBehaviour
     {
         gameObject.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, 1)*rotationSpeed);
     }
-    public void SinglePlayerStart()
-    {
-
-        SceneManager.LoadScene(3);
-
-    }
-
-    public void MultiPlayerStart()
-    {
-
-        SceneManager.LoadScene(2);
-
-    }
 
     public void ExitGame()
     {
 
         Application.Quit();
 
+    }
+
+    public static void LoadSceneFromSave()
+    {
+        //check the playerprefs to figure out which scene to load
+        if(PlayerPrefs.GetFloat(SaveGame.MAIN_QUEST + " objective 0 progress") >= 1.0f)
+        {
+            //TODO - change when build structure is complete
+            SceneManager.LoadScene(4);
+        }
+        else
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }

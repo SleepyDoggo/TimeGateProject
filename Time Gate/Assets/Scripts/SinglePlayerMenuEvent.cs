@@ -12,7 +12,9 @@ public class SinglePlayerMenuEvent : MonoBehaviour, MenuEvent
     }
     public void SinglePlayerStart()
     {
-        SceneManager.LoadScene(2);
+        SaveGame.LoadGame();
+        //SceneManager.LoadScene(2);
+        Main_Menu.LoadSceneFromSave();
 
     }
 }

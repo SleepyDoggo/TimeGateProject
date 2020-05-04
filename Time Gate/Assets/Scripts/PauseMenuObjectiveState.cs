@@ -26,7 +26,7 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
 
     public bool CancelAction()
     {
-        name = originalName;
+        /*name = originalName;
         if (insideSubMenu)
         {
             objectives[index].DeActiveMenu();
@@ -41,12 +41,13 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
             //get out of pause menu
             name = originalName;
             return true;
-        }
+        }*/
+        return true;
     }
 
     public bool ConfirmAction()
     {
-        if (!insideSubMenu)
+        /*if (!insideSubMenu)
         {
             //go inside the sub menu of objectives
             insideSubMenu = true;
@@ -62,7 +63,8 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
             //no longer inside sub menu, call cancel action to reset insideSubMenu
             CancelAction();
             return false;
-        }
+        }*/
+        return false;
 
     }
 
@@ -101,7 +103,9 @@ public class PauseMenuObjectiveState : MonoBehaviour, MenuState
 
     public void LoadState()
     {
-
+        for (int i = 0; i < objectives.Length; i++) {
+            objectives[i].SetText();
+        }
     }
 
     public GameObject GetGameObject()
