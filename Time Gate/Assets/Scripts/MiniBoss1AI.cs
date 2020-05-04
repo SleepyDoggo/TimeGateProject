@@ -16,19 +16,19 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
     public int contactDamage = 5;
     public float chargingFrequency = 3.0f;
     public float chargeWaitTime = 0.66f;
-    public float delay = 1.5f;
+    public float delay = 0.5f;
     public float chargeLength = 2.0f;
 
     public GameObject projectile;
     public GameObject firingPoint1;
     public GameObject firingPoint2;
-    public float projectileSpeed = 5;
-    public int projectileDamage = 5;
+    public float projectileSpeed = 2;
+    public int projectileDamage = 6;
 
     //Fields required for health and dying 
     private int health;
     [Range(1, 100)]
-    public int maxHealth = 6;
+    public int maxHealth = 30;
     public GameObject healthBar;
 
     //Score per shot
@@ -53,7 +53,7 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
     bool dead;
 
     //variables associated with audio playing
-    public AudioSource chargeSound, shootSound, deathSound;
+    public AudioSource shootSound, deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -122,6 +122,7 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
                 starting = true;
                 moveTimer = 0;
                 animator.SetBool("Moving", moving);
+                shootSound.Play();
             }
         }
         else if (starting)
@@ -172,7 +173,7 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
         }
         else if (starting)
         {
-            Shoot();
+            Startup();
         }
         else if (charging)
         {
@@ -237,6 +238,7 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
     {
         rb.velocity = Vector2.zero;
         movementSpeed = 0;
+        Shoot();
     }
 
     void Charge()
@@ -259,7 +261,7 @@ public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
         obj2.transform.parent = null;
         obj2.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
         obj2.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
-        shootSound.Play();
+        
 
     }
 

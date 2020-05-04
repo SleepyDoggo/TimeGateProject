@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439511057075762240}
   - component: {fileID: 2548720372644172481}
+  - component: {fileID: 593119915311269554}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Enemy
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &593119915311269554
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500397217503209455}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ceae3a2baac76b44f96508d853c2017b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1987917882478376510
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +176,7 @@ GameObject:
   - component: {fileID: 3249469990506005418}
   - component: {fileID: 7713819288540134403}
   - component: {fileID: 1902950167106267298}
+  - component: {fileID: 2308425867677499910}
   - component: {fileID: 2994948868183607639}
   - component: {fileID: 7788680556039498926}
   - component: {fileID: 7860168576830059060}
@@ -247,6 +268,38 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &2308425867677499910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428658149940639286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c355e3450156fc649986adba3770bb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistanceFromUser: 4
+  movementSpeed: 3
+  contactDamage: 5
+  chargingFrequency: 3
+  chargeWaitTime: 0.66
+  delay: 1.5
+  chargeLength: 2
+  projectile: {fileID: 7870031141126340219, guid: ae06b518d4d0d7f48a212e5b1a1ce69c,
+    type: 3}
+  firingPoint1: {fileID: 5356961091445828544}
+  firingPoint2: {fileID: 5603726839562425927}
+  projectileSpeed: 5
+  projectileDamage: 6
+  maxHealth: 30
+  healthBar: {fileID: 100015987033704715}
+  maxScore: 500
+  nextWaypointDistance: 3
+  animator: {fileID: 593119915311269554}
+  shootSound: {fileID: 7788680556039498926}
+  deathSound: {fileID: 7860168576830059060}
 --- !u!82 &2994948868183607639
 AudioSource:
   m_ObjectHideFlags: 0
@@ -644,6 +697,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285477330ea70ab4281a367221a84675, type: 3}
+--- !u!1 &100015987033704715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6489040170297390961, guid: 285477330ea70ab4281a367221a84675,
+    type: 3}
+  m_PrefabInstance: {fileID: 6588458001430085242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8999603339451584760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2849622062840917634, guid: 285477330ea70ab4281a367221a84675,
