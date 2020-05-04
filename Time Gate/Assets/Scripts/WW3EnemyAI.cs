@@ -205,21 +205,11 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     {
         //shoot a projectile in the direction of the enemy
         //TODO
-        shooting = true;
-        animator.SetBool("Shooting", shooting);
         GameObject obj = Instantiate(projectile, firingPoint.transform.position, Quaternion.identity);
         obj.transform.parent = null;
         obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
         obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
-        shootSound.Play();
-        Retract();
 
-    }
-
-    void Retract()
-    {
-        shooting = false;
-        animator.SetBool("Retract", shooting);
     }
 
     public void TakeDamage(int damage, PlayerData data)

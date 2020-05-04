@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
+public class MiniBoss1AI : MonoBehaviour, EnemyAI, Spawnable
 {
 
     //fields for movement 
@@ -18,6 +18,12 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     public float chargeWaitTime = 0.66f;
     public float delay = 1.5f;
     public float chargeLength = 2.0f;
+
+    public GameObject projectile;
+    public GameObject firingPoint1;
+    public GameObject firingPoint2;
+    public float projectileSpeed = 5;
+    public int projectileDamage = 5;
 
     //Fields required for health and dying 
     private int health;
@@ -47,7 +53,7 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     bool dead;
 
     //variables associated with audio playing
-    public AudioSource chargeSound, startSound, deathSound;
+    public AudioSource chargeSound, shootSound, deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +113,8 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     // Update is called once per frame
     void Update()
     {
-        if (moving) { 
+        if (moving)
+        {
             moveTimer += Time.deltaTime;
             if (moveTimer >= chargingFrequency)
             {
@@ -115,8 +122,6 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
                 starting = true;
                 moveTimer = 0;
                 animator.SetBool("Moving", moving);
-                startSound.Play();
-                animator.SetBool("Starting", starting);
             }
         }
         else if (starting)
@@ -124,11 +129,9 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
             startTimer += Time.deltaTime;
             if (startTimer > delay)
             {
-                Debug.Log("starting");
                 starting = false;
                 charging = true;
                 startTimer = 0;
-                animator.SetBool("Starting", starting);
                 animator.SetBool("Charging", charging);
             }
 
@@ -137,7 +140,7 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
         {
 
             chargeTimer += Time.deltaTime;
-            if(chargeTimer > chargeLength)
+            if (chargeTimer > chargeLength)
             {
                 charging = false;
                 moving = true;
@@ -147,9 +150,9 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
                 animator.SetBool("Moving", moving);
             }
         }
-        
 
-            
+
+
     }
     void FixedUpdate()
     {
@@ -165,17 +168,17 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
         }
         if (moving)
         {
-            MoveEnemy();        
+            MoveEnemy();
         }
-        else if(starting)
+        else if (starting)
         {
-            Startup();
+            Shoot();
         }
-        else if(charging)
+        else if (charging)
         {
             Charge();
         }
-        
+
 
     }
 
@@ -233,7 +236,7 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
     void Startup()
     {
         rb.velocity = Vector2.zero;
-        movementSpeed = 0; 
+        movementSpeed = 0;
     }
 
     void Charge()
@@ -242,6 +245,22 @@ public class ChargerAI : MonoBehaviour, EnemyAI, Spawnable
         contactDamage = 10;
         minDistanceFromUser = 0;
         MoveEnemy();
+    }
+
+    void Shoot()
+    {
+        //shoot a projectile in the direction of the enemy
+        //TODO
+        GameObject obj1 = Instantiate(projectile, firingPoint1.transform.position, Quaternion.identity);
+        GameObject obj2 = Instantiate(projectile, firingPoint2.transform.position, Quaternion.identity);
+        obj1.transform.parent = null;
+        obj1.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
+        obj1.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+        obj2.transform.parent = null;
+        obj2.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
+        obj2.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+        shootSound.Play();
+
     }
 
     public void TakeDamage(int damage, PlayerData data)
