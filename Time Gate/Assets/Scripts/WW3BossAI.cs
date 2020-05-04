@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
+public class WW3BossAI : MonoBehaviour, EnemyAI, Spawnable
 {
 
     //fields for movement 
@@ -20,7 +20,8 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     public float attackLength = 0.05f;
 
     public GameObject projectile;
-    public GameObject firingPoint;
+    public GameObject firingPoint1;
+    public GameObject firingPoint2;
     public float projectileSpeed = 2;
     public int projectileDamage = 1;
 
@@ -48,7 +49,6 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     public Animator animator;
     bool attacking;
     bool starting;
-    bool retract;
     bool idle;
     bool dead;
 
@@ -122,8 +122,7 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
                 idle = false;
                 starting = true;
                 idleTimer = 0;
-                animator.SetBool("Idle", idle);
-                animator.SetBool("Starting", starting);
+                shootSound.Play();
             }
         }
         else if (starting)
@@ -131,13 +130,9 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
             startTimer += Time.deltaTime;
             if (startTimer > delay)
             {
-                Debug.Log("starting");
                 starting = false;
                 attacking = true;
                 startTimer = 0;
-                shootSound.Play();
-                animator.SetBool("Starting", starting);
-                animator.SetBool("Attacking", attacking);
             }
 
         }
@@ -147,28 +142,11 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
             attackTimer += Time.deltaTime;
             if (attackTimer > attackLength)
             {
-                Debug.Log("attacking");
                 attacking = false;
-                retract = true;
-                attackTimer = 0;
-                animator.SetBool("Attacking", attacking);
-                animator.SetBool("Retract", retract);
-            }
-        }
-        else if (retract)
-        {
-            retractTimer += Time.deltaTime;
-            if (retractTimer > delay)
-            {
-                Debug.Log("retract");
-                retract = false;
                 idle = true;
-                retractTimer = 0;
-                animator.SetBool("Retract", retract);
-                animator.SetBool("Idle", idle);
+                attackTimer = 0;
             }
         }
-
 
 
     }
@@ -196,11 +174,6 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
         else if (attacking)
         {
             Shoot();
-            MoveEnemy();
-        }
-        else if(retract)
-        {
-            Retract();
             MoveEnemy();
         }
 
@@ -267,12 +240,18 @@ public class WW3EnemyAI : MonoBehaviour, EnemyAI, Spawnable
     {
         //shoot a projectile in the direction of the enemy
         //TODO
-        GameObject obj = Instantiate(projectile, firingPoint.transform.position, Quaternion.identity);
-        obj.transform.parent = null;
-        obj.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
-        obj.GetComponent<Rigidbody2D>().velocity = trackingVector.normalized * projectileSpeed * 5;
+        GameObject obj1 = Instantiate(projectile, firingPoint1.transform.position, Quaternion.identity);
+        GameObject obj2 = Instantiate(projectile, firingPoint2.transform.position, Quaternion.identity);
+        obj1.transform.parent = null;
+        obj1.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
+        Vector3 vec1 = positionToTrack.position - firingPoint1.transform.position;
+        Vector3 vec2 = positionToTrack.position - firingPoint2.transform.position;
+        obj1.GetComponent<Rigidbody2D>().velocity = vec1.normalized * projectileSpeed * 5;
+        obj2.transform.parent = null;
+        obj2.GetComponent<ProjectileDamage>().SetDamage(projectileDamage);
+        obj2.GetComponent<Rigidbody2D>().velocity = vec2.normalized * projectileSpeed * 5;
 
-
+        
     }
 
     public void TakeDamage(int damage, PlayerData data)
