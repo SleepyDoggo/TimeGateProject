@@ -72,7 +72,27 @@ public class MultiplayerCamera : MonoBehaviour
     void Zoom()
     {
         //Debug.Log(GetGreatestDistance());
-        float newSize = Mathf.Lerp(minCamSize, maxCamSize, GetGreatestDistance() / sizeLimiter);
+
+
+
+        //Debug.Log("low " + GetGreatestDistance().x);
+
+
+        //Debug.Log("Y Low " + GetGreatestDistance().y);
+
+        float newSize = Mathf.Lerp(minCamSize, maxCamSize, ((GetGreatestDistance().x)) / sizeLimiter);
+
+        if (GetGreatestDistance().x > GetGreatestDistance().y)
+        {
+            Debug.Log("x big boi");
+
+        }
+        else if (GetGreatestDistance().y > GetGreatestDistance().x)
+        {
+            Debug.Log("Y big boi");
+            newSize = Mathf.Lerp(minCamSize, maxCamSize, ((GetGreatestDistance().y)) / sizeLimiter);
+        }
+
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newSize, Time.deltaTime);
     } 
     void Move()
@@ -82,7 +102,7 @@ public class MultiplayerCamera : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }
 
-    float GetGreatestDistance()
+    Vector2 GetGreatestDistance()
     {
         var bounds = new Bounds(targets[0].position, Vector3.zero);
 
@@ -95,7 +115,7 @@ public class MultiplayerCamera : MonoBehaviour
 
         }
 
-        return bounds.size.x;
+        return bounds.size;
     }
 
     Vector3 GetCenterPoint()
